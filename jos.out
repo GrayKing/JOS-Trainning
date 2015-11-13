@@ -1,0 +1,1172 @@
++ ld obj/kern/kernel
++ mk obj/kern/kernel.img
+Could not open option rom 'sgabios.bin': No such file or directory
+6828 decimal is 15254 octal!
+Physical memory: 66556K available, base = 640K, extended = 65532K
+check_page_alloc() succeeded!
+check_page() succeeded!
+check_kern_pgdir() succeeded!
+check_page_installed_pgdir() succeeded!
+SMP: CPU 0 found 4 CPU(s)
+enabled interrupts: 1 2
+SMP: CPU 1 starting
+SMP: CPU 2 starting
+SMP: CPU 3 starting
+[00000000] new env 00001000
+[00001000] new env 00001001
+envid =[ 00001000 ] , cur_eip = 0080175b
+envid =[ 00001001 ] , cur_eip = 0080152a
+envid =[ 00001001 ] , cur_eip = 0080157f
+CPU 0: 2 [00001001] new env 00001002
+envid =[ 00001001 ] , cur_eip = 0080175b
+envid =[ 00001002 ] , cur_eip = 0080152a
+envid =[ 00001002 ] , cur_eip = 0080157f
+CPU 0: 3 [00001002] new env 00001003
+envid =[ 00001002 ] , cur_eip = 0080175b
+envid =[ 00001003 ] , cur_eip = 0080152a
+envid =[ 00001003 ] , cur_eip = 0080157f
+CPU 2: 5 [00001003] new env 00001004
+envid =[ 00001003 ] , cur_eip = 0080175b
+envid =[ 00001004 ] , cur_eip = 0080152a
+envid =[ 00001004 ] , cur_eip = 0080157f
+CPU 2: 7 [00001004] new env 00001005
+envid =[ 00001004 ] , cur_eip = 0080175b
+envid =[ 00001005 ] , cur_eip = 0080152a
+envid =[ 00001005 ] , cur_eip = 0080157f
+CPU 1: 11 [00001005] new env 00001006
+envid =[ 00001005 ] , cur_eip = 0080175b
+envid =[ 00001006 ] , cur_eip = 0080152a
+envid =[ 00001006 ] , cur_eip = 0080157f
+CPU 2: 13 [00001006] new env 00001007
+envid =[ 00001006 ] , cur_eip = 0080175b
+envid =[ 00001007 ] , cur_eip = 0080152a
+envid =[ 00001007 ] , cur_eip = 0080157f
+CPU 2: 17 [00001007] new env 00001008
+envid =[ 00001007 ] , cur_eip = 0080175b
+envid =[ 00001008 ] , cur_eip = 0080152a
+envid =[ 00001008 ] , cur_eip = 0080157f
+CPU 1: 19 [00001008] new env 00001009
+envid =[ 00001008 ] , cur_eip = 0080175b
+envid =[ 00001009 ] , cur_eip = 0080152a
+envid =[ 00001009 ] , cur_eip = 0080157f
+CPU 3: 23 [00001009] new env 0000100a
+envid =[ 00001009 ] , cur_eip = 0080175b
+envid =[ 0000100a ] , cur_eip = 0080152a
+envid =[ 0000100a ] , cur_eip = 0080157f
+CPU 3: 29 [0000100a] new env 0000100b
+envid =[ 0000100a ] , cur_eip = 0080175b
+envid =[ 0000100b ] , cur_eip = 0080152a
+envid =[ 0000100b ] , cur_eip = 0080157f
+CPU 2: 31 [0000100b] new env 0000100c
+envid =[ 0000100b ] , cur_eip = 0080175b
+envid =[ 0000100c ] , cur_eip = 0080152a
+envid =[ 0000100c ] , cur_eip = 0080157f
+CPU 3: 37 [0000100c] new env 0000100d
+envid =[ 0000100c ] , cur_eip = 0080175b
+envid =[ 0000100d ] , cur_eip = 0080152a
+envid =[ 0000100d ] , cur_eip = 0080157f
+CPU 2: 41 [0000100d] new env 0000100e
+envid =[ 0000100d ] , cur_eip = 0080175b
+envid =[ 0000100e ] , cur_eip = 0080152a
+envid =[ 0000100e ] , cur_eip = 0080157f
+CPU 1: 43 [0000100e] new env 0000100f
+envid =[ 0000100e ] , cur_eip = 0080175b
+envid =[ 0000100f ] , cur_eip = 0080152a
+envid =[ 0000100f ] , cur_eip = 0080157f
+CPU 2: 47 [0000100f] new env 00001010
+envid =[ 0000100f ] , cur_eip = 0080175b
+envid =[ 00001010 ] , cur_eip = 0080152a
+envid =[ 00001010 ] , cur_eip = 0080157f
+CPU 0: 53 [00001010] new env 00001011
+envid =[ 00001010 ] , cur_eip = 0080175b
+envid =[ 00001011 ] , cur_eip = 0080152a
+envid =[ 00001011 ] , cur_eip = 0080157f
+CPU 2: 59 [00001011] new env 00001012
+envid =[ 00001011 ] , cur_eip = 0080175b
+envid =[ 00001012 ] , cur_eip = 0080152a
+envid =[ 00001012 ] , cur_eip = 0080157f
+CPU 1: 61 [00001012] new env 00001013
+envid =[ 00001012 ] , cur_eip = 0080175b
+envid =[ 00001013 ] , cur_eip = 0080152a
+envid =[ 00001013 ] , cur_eip = 0080157f
+CPU 3: 67 [00001013] new env 00001014
+envid =[ 00001013 ] , cur_eip = 0080175b
+envid =[ 00001014 ] , cur_eip = 0080152a
+envid =[ 00001014 ] , cur_eip = 0080157f
+CPU 0: 71 [00001014] new env 00001015
+envid =[ 00001014 ] , cur_eip = 0080175b
+envid =[ 00001015 ] , cur_eip = 0080152a
+envid =[ 00001015 ] , cur_eip = 0080157f
+CPU 2: 73 [00001015] new env 00001016
+envid =[ 00001015 ] , cur_eip = 0080175b
+envid =[ 00001016 ] , cur_eip = 0080152a
+envid =[ 00001016 ] , cur_eip = 0080157f
+CPU 2: 79 [00001016] new env 00001017
+envid =[ 00001016 ] , cur_eip = 0080175b
+envid =[ 00001017 ] , cur_eip = 0080152a
+envid =[ 00001017 ] , cur_eip = 0080157f
+CPU 2: 83 [00001017] new env 00001018
+envid =[ 00001017 ] , cur_eip = 0080175b
+envid =[ 00001018 ] , cur_eip = 0080152a
+envid =[ 00001018 ] , cur_eip = 0080157f
+CPU 0: 89 [00001018] new env 00001019
+envid =[ 00001018 ] , cur_eip = 0080175b
+envid =[ 00001019 ] , cur_eip = 0080152a
+envid =[ 00001019 ] , cur_eip = 0080157f
+CPU 1: 97 [00001019] new env 0000101a
+envid =[ 00001019 ] , cur_eip = 0080175b
+envid =[ 0000101a ] , cur_eip = 0080152a
+envid =[ 0000101a ] , cur_eip = 0080157f
+CPU 1: 101 [0000101a] new env 0000101b
+envid =[ 0000101a ] , cur_eip = 0080175b
+envid =[ 0000101b ] , cur_eip = 0080152a
+envid =[ 0000101b ] , cur_eip = 0080157f
+CPU 0: 103 [0000101b] new env 0000101c
+envid =[ 0000101b ] , cur_eip = 0080175b
+envid =[ 0000101c ] , cur_eip = 0080152a
+envid =[ 0000101c ] , cur_eip = 0080157f
+CPU 0: 107 [0000101c] new env 0000101d
+envid =[ 0000101c ] , cur_eip = 0080175b
+envid =[ 0000101d ] , cur_eip = 0080152a
+envid =[ 0000101d ] , cur_eip = 0080157f
+CPU 2: 109 [0000101d] new env 0000101e
+envid =[ 0000101d ] , cur_eip = 0080175b
+envid =[ 0000101e ] , cur_eip = 0080152a
+envid =[ 0000101e ] , cur_eip = 0080157f
+CPU 2: 113 [0000101e] new env 0000101f
+envid =[ 0000101e ] , cur_eip = 0080175b
+envid =[ 0000101f ] , cur_eip = 0080152a
+envid =[ 0000101f ] , cur_eip = 0080157f
+CPU 1: 127 [0000101f] new env 00001020
+envid =[ 0000101f ] , cur_eip = 0080175b
+envid =[ 00001020 ] , cur_eip = 0080152a
+envid =[ 00001020 ] , cur_eip = 0080157f
+CPU 3: 131 [00001020] new env 00001021
+envid =[ 00001020 ] , cur_eip = 0080175b
+envid =[ 00001021 ] , cur_eip = 0080152a
+envid =[ 00001021 ] , cur_eip = 0080157f
+CPU 1: 137 [00001021] new env 00001022
+envid =[ 00001021 ] , cur_eip = 0080175b
+envid =[ 00001022 ] , cur_eip = 0080152a
+envid =[ 00001022 ] , cur_eip = 0080157f
+CPU 3: 139 [00001022] new env 00001023
+envid =[ 00001022 ] , cur_eip = 0080175b
+envid =[ 00001023 ] , cur_eip = 0080152a
+envid =[ 00001023 ] , cur_eip = 0080157f
+CPU 1: 149 [00001023] new env 00001024
+envid =[ 00001023 ] , cur_eip = 0080175b
+envid =[ 00001024 ] , cur_eip = 0080152a
+envid =[ 00001024 ] , cur_eip = 0080157f
+CPU 3: 151 [00001024] new env 00001025
+envid =[ 00001024 ] , cur_eip = 0080175b
+envid =[ 00001025 ] , cur_eip = 0080152a
+envid =[ 00001025 ] , cur_eip = 0080157f
+CPU 0: 157 [00001025] new env 00001026
+envid =[ 00001025 ] , cur_eip = 0080175b
+envid =[ 00001026 ] , cur_eip = 0080152a
+envid =[ 00001026 ] , cur_eip = 0080157f
+CPU 1: 163 [00001026] new env 00001027
+envid =[ 00001026 ] , cur_eip = 0080175b
+envid =[ 00001027 ] , cur_eip = 0080152a
+envid =[ 00001027 ] , cur_eip = 0080157f
+CPU 3: 167 [00001027] new env 00001028
+envid =[ 00001027 ] , cur_eip = 0080175b
+envid =[ 00001028 ] , cur_eip = 0080152a
+envid =[ 00001028 ] , cur_eip = 0080157f
+CPU 2: 173 [00001028] new env 00001029
+envid =[ 00001028 ] , cur_eip = 0080175b
+envid =[ 00001029 ] , cur_eip = 0080152a
+envid =[ 00001029 ] , cur_eip = 0080157f
+CPU 1: 179 [00001029] new env 0000102a
+envid =[ 00001029 ] , cur_eip = 0080175b
+envid =[ 0000102a ] , cur_eip = 0080152a
+envid =[ 0000102a ] , cur_eip = 0080157f
+CPU 2: 181 [0000102a] new env 0000102b
+envid =[ 0000102a ] , cur_eip = 0080175b
+envid =[ 0000102b ] , cur_eip = 0080152a
+envid =[ 0000102b ] , cur_eip = 0080157f
+CPU 0: 191 [0000102b] new env 0000102c
+envid =[ 0000102b ] , cur_eip = 0080175b
+envid =[ 0000102c ] , cur_eip = 0080152a
+envid =[ 0000102c ] , cur_eip = 0080157f
+CPU 3: 193 [0000102c] new env 0000102d
+envid =[ 0000102c ] , cur_eip = 0080175b
+envid =[ 0000102d ] , cur_eip = 0080152a
+envid =[ 0000102d ] , cur_eip = 0080157f
+CPU 1: 197 [0000102d] new env 0000102e
+envid =[ 0000102d ] , cur_eip = 0080175b
+envid =[ 0000102e ] , cur_eip = 0080152a
+envid =[ 0000102e ] , cur_eip = 0080157f
+CPU 3: 199 [0000102e] new env 0000102f
+envid =[ 0000102e ] , cur_eip = 0080175b
+envid =[ 0000102f ] , cur_eip = 0080152a
+envid =[ 0000102f ] , cur_eip = 0080157f
+CPU 2: 211 [0000102f] new env 00001030
+envid =[ 0000102f ] , cur_eip = 0080175b
+envid =[ 00001030 ] , cur_eip = 0080152a
+envid =[ 00001030 ] , cur_eip = 0080157f
+CPU 3: 223 [00001030] new env 00001031
+envid =[ 00001030 ] , cur_eip = 0080175b
+envid =[ 00001031 ] , cur_eip = 0080152a
+envid =[ 00001031 ] , cur_eip = 0080157f
+CPU 2: 227 [00001031] new env 00001032
+envid =[ 00001031 ] , cur_eip = 0080175b
+envid =[ 00001032 ] , cur_eip = 0080152a
+envid =[ 00001032 ] , cur_eip = 0080157f
+CPU 0: 229 [00001032] new env 00001033
+envid =[ 00001032 ] , cur_eip = 0080175b
+envid =[ 00001033 ] , cur_eip = 0080152a
+envid =[ 00001033 ] , cur_eip = 0080157f
+CPU 3: 233 [00001033] new env 00001034
+envid =[ 00001033 ] , cur_eip = 0080175b
+envid =[ 00001034 ] , cur_eip = 0080152a
+envid =[ 00001034 ] , cur_eip = 0080157f
+CPU 0: 239 [00001034] new env 00001035
+envid =[ 00001034 ] , cur_eip = 0080175b
+envid =[ 00001035 ] , cur_eip = 0080152a
+envid =[ 00001035 ] , cur_eip = 0080157f
+CPU 2: 241 [00001035] new env 00001036
+envid =[ 00001035 ] , cur_eip = 0080175b
+envid =[ 00001036 ] , cur_eip = 0080152a
+envid =[ 00001036 ] , cur_eip = 0080157f
+CPU 2: 251 [00001036] new env 00001037
+envid =[ 00001036 ] , cur_eip = 0080175b
+envid =[ 00001037 ] , cur_eip = 0080152a
+envid =[ 00001037 ] , cur_eip = 0080157f
+CPU 3: 257 [00001037] new env 00001038
+envid =[ 00001037 ] , cur_eip = 0080175b
+envid =[ 00001038 ] , cur_eip = 0080152a
+envid =[ 00001038 ] , cur_eip = 0080157f
+CPU 2: 263 [00001038] new env 00001039
+envid =[ 00001038 ] , cur_eip = 0080175b
+envid =[ 00001039 ] , cur_eip = 0080152a
+envid =[ 00001039 ] , cur_eip = 0080157f
+CPU 2: 269 [00001039] new env 0000103a
+envid =[ 00001039 ] , cur_eip = 0080175b
+envid =[ 0000103a ] , cur_eip = 0080152a
+envid =[ 0000103a ] , cur_eip = 0080157f
+CPU 3: 271 [0000103a] new env 0000103b
+envid =[ 0000103a ] , cur_eip = 0080175b
+envid =[ 0000103b ] , cur_eip = 0080152a
+envid =[ 0000103b ] , cur_eip = 0080157f
+CPU 2: 277 [0000103b] new env 0000103c
+envid =[ 0000103b ] , cur_eip = 0080175b
+envid =[ 0000103c ] , cur_eip = 0080152a
+envid =[ 0000103c ] , cur_eip = 0080157f
+CPU 0: 281 [0000103c] new env 0000103d
+envid =[ 0000103c ] , cur_eip = 0080175b
+envid =[ 0000103d ] , cur_eip = 0080152a
+envid =[ 0000103d ] , cur_eip = 0080157f
+CPU 2: 283 [0000103d] new env 0000103e
+envid =[ 0000103d ] , cur_eip = 0080175b
+envid =[ 0000103e ] , cur_eip = 0080152a
+envid =[ 0000103e ] , cur_eip = 0080157f
+CPU 2: 293 [0000103e] new env 0000103f
+envid =[ 0000103e ] , cur_eip = 0080175b
+envid =[ 0000103f ] , cur_eip = 0080152a
+envid =[ 0000103f ] , cur_eip = 0080157f
+CPU 1: 307 [0000103f] new env 00001040
+envid =[ 0000103f ] , cur_eip = 0080175b
+envid =[ 00001040 ] , cur_eip = 0080152a
+envid =[ 00001040 ] , cur_eip = 0080157f
+CPU 2: 311 [00001040] new env 00001041
+envid =[ 00001040 ] , cur_eip = 0080175b
+envid =[ 00001041 ] , cur_eip = 0080152a
+envid =[ 00001041 ] , cur_eip = 0080157f
+CPU 0: 313 [00001041] new env 00001042
+envid =[ 00001041 ] , cur_eip = 0080175b
+envid =[ 00001042 ] , cur_eip = 0080152a
+envid =[ 00001042 ] , cur_eip = 0080157f
+CPU 3: 317 [00001042] new env 00001043
+envid =[ 00001042 ] , cur_eip = 0080175b
+envid =[ 00001043 ] , cur_eip = 0080152a
+envid =[ 00001043 ] , cur_eip = 0080157f
+CPU 0: 331 [00001043] new env 00001044
+envid =[ 00001043 ] , cur_eip = 0080175b
+envid =[ 00001044 ] , cur_eip = 0080152a
+envid =[ 00001044 ] , cur_eip = 0080157f
+CPU 1: 337 [00001044] new env 00001045
+envid =[ 00001044 ] , cur_eip = 0080175b
+envid =[ 00001045 ] , cur_eip = 0080152a
+envid =[ 00001045 ] , cur_eip = 0080157f
+CPU 0: 347 [00001045] new env 00001046
+envid =[ 00001045 ] , cur_eip = 0080175b
+envid =[ 00001046 ] , cur_eip = 0080152a
+envid =[ 00001046 ] , cur_eip = 0080157f
+CPU 0: 349 [00001046] new env 00001047
+envid =[ 00001046 ] , cur_eip = 0080175b
+envid =[ 00001047 ] , cur_eip = 0080152a
+envid =[ 00001047 ] , cur_eip = 0080157f
+CPU 2: 353 [00001047] new env 00001048
+envid =[ 00001047 ] , cur_eip = 0080175b
+envid =[ 00001048 ] , cur_eip = 0080152a
+envid =[ 00001048 ] , cur_eip = 0080157f
+CPU 0: 359 [00001048] new env 00001049
+envid =[ 00001048 ] , cur_eip = 0080175b
+envid =[ 00001049 ] , cur_eip = 0080152a
+envid =[ 00001049 ] , cur_eip = 0080157f
+CPU 1: 367 [00001049] new env 0000104a
+envid =[ 00001049 ] , cur_eip = 0080175b
+envid =[ 0000104a ] , cur_eip = 0080152a
+envid =[ 0000104a ] , cur_eip = 0080157f
+CPU 1: 373 [0000104a] new env 0000104b
+envid =[ 0000104a ] , cur_eip = 0080175b
+envid =[ 0000104b ] , cur_eip = 0080152a
+envid =[ 0000104b ] , cur_eip = 0080157f
+CPU 0: 379 [0000104b] new env 0000104c
+envid =[ 0000104b ] , cur_eip = 0080175b
+envid =[ 0000104c ] , cur_eip = 0080152a
+envid =[ 0000104c ] , cur_eip = 0080157f
+CPU 1: 383 [0000104c] new env 0000104d
+envid =[ 0000104c ] , cur_eip = 0080175b
+envid =[ 0000104d ] , cur_eip = 0080152a
+envid =[ 0000104d ] , cur_eip = 0080157f
+CPU 2: 389 [0000104d] new env 0000104e
+envid =[ 0000104d ] , cur_eip = 0080175b
+envid =[ 0000104e ] , cur_eip = 0080152a
+envid =[ 0000104e ] , cur_eip = 0080157f
+CPU 2: 397 [0000104e] new env 0000104f
+envid =[ 0000104e ] , cur_eip = 0080175b
+envid =[ 0000104f ] , cur_eip = 0080152a
+envid =[ 0000104f ] , cur_eip = 0080157f
+CPU 3: 401 [0000104f] new env 00001050
+envid =[ 0000104f ] , cur_eip = 0080175b
+envid =[ 00001050 ] , cur_eip = 0080152a
+envid =[ 00001050 ] , cur_eip = 0080157f
+CPU 2: 409 [00001050] new env 00001051
+envid =[ 00001050 ] , cur_eip = 0080175b
+envid =[ 00001051 ] , cur_eip = 0080152a
+envid =[ 00001051 ] , cur_eip = 0080157f
+CPU 1: 419 [00001051] new env 00001052
+envid =[ 00001051 ] , cur_eip = 0080175b
+envid =[ 00001052 ] , cur_eip = 0080152a
+envid =[ 00001052 ] , cur_eip = 0080157f
+CPU 3: 421 [00001052] new env 00001053
+envid =[ 00001052 ] , cur_eip = 0080175b
+envid =[ 00001053 ] , cur_eip = 0080152a
+envid =[ 00001053 ] , cur_eip = 0080157f
+CPU 3: 431 [00001053] new env 00001054
+envid =[ 00001053 ] , cur_eip = 0080175b
+envid =[ 00001054 ] , cur_eip = 0080152a
+envid =[ 00001054 ] , cur_eip = 0080157f
+CPU 1: 433 [00001054] new env 00001055
+envid =[ 00001054 ] , cur_eip = 0080175b
+envid =[ 00001055 ] , cur_eip = 0080152a
+envid =[ 00001055 ] , cur_eip = 0080157f
+CPU 1: 439 [00001055] new env 00001056
+envid =[ 00001055 ] , cur_eip = 0080175b
+envid =[ 00001056 ] , cur_eip = 0080152a
+envid =[ 00001056 ] , cur_eip = 0080157f
+CPU 2: 443 [00001056] new env 00001057
+envid =[ 00001056 ] , cur_eip = 0080175b
+envid =[ 00001057 ] , cur_eip = 0080152a
+envid =[ 00001057 ] , cur_eip = 0080157f
+CPU 0: 449 [00001057] new env 00001058
+envid =[ 00001057 ] , cur_eip = 0080175b
+envid =[ 00001058 ] , cur_eip = 0080152a
+envid =[ 00001058 ] , cur_eip = 0080157f
+CPU 3: 457 [00001058] new env 00001059
+envid =[ 00001058 ] , cur_eip = 0080175b
+envid =[ 00001059 ] , cur_eip = 0080152a
+envid =[ 00001059 ] , cur_eip = 0080157f
+CPU 2: 461 [00001059] new env 0000105a
+envid =[ 00001059 ] , cur_eip = 0080175b
+envid =[ 0000105a ] , cur_eip = 0080152a
+envid =[ 0000105a ] , cur_eip = 0080157f
+CPU 0: 463 [0000105a] new env 0000105b
+envid =[ 0000105a ] , cur_eip = 0080175b
+envid =[ 0000105b ] , cur_eip = 0080152a
+envid =[ 0000105b ] , cur_eip = 0080157f
+CPU 2: 467 [0000105b] new env 0000105c
+envid =[ 0000105b ] , cur_eip = 0080175b
+envid =[ 0000105c ] , cur_eip = 0080152a
+envid =[ 0000105c ] , cur_eip = 0080157f
+CPU 2: 479 [0000105c] new env 0000105d
+envid =[ 0000105c ] , cur_eip = 0080175b
+envid =[ 0000105d ] , cur_eip = 0080152a
+envid =[ 0000105d ] , cur_eip = 0080157f
+CPU 1: 487 [0000105d] new env 0000105e
+envid =[ 0000105d ] , cur_eip = 0080175b
+envid =[ 0000105e ] , cur_eip = 0080152a
+envid =[ 0000105e ] , cur_eip = 0080157f
+CPU 2: 491 [0000105e] new env 0000105f
+envid =[ 0000105e ] , cur_eip = 0080175b
+envid =[ 0000105f ] , cur_eip = 0080152a
+envid =[ 0000105f ] , cur_eip = 0080157f
+CPU 0: 499 [0000105f] new env 00001060
+envid =[ 0000105f ] , cur_eip = 0080175b
+envid =[ 00001060 ] , cur_eip = 0080152a
+envid =[ 00001060 ] , cur_eip = 0080157f
+CPU 2: 503 [00001060] new env 00001061
+envid =[ 00001060 ] , cur_eip = 0080175b
+envid =[ 00001061 ] , cur_eip = 0080152a
+envid =[ 00001061 ] , cur_eip = 0080157f
+CPU 0: 509 [00001061] new env 00001062
+envid =[ 00001061 ] , cur_eip = 0080175b
+envid =[ 00001062 ] , cur_eip = 0080152a
+envid =[ 00001062 ] , cur_eip = 0080157f
+CPU 0: 521 [00001062] new env 00001063
+envid =[ 00001062 ] , cur_eip = 0080175b
+envid =[ 00001063 ] , cur_eip = 0080152a
+envid =[ 00001063 ] , cur_eip = 0080157f
+CPU 1: 523 [00001063] new env 00001064
+envid =[ 00001063 ] , cur_eip = 0080175b
+envid =[ 00001064 ] , cur_eip = 0080152a
+envid =[ 00001064 ] , cur_eip = 0080157f
+CPU 2: 541 [00001064] new env 00001065
+envid =[ 00001064 ] , cur_eip = 0080175b
+envid =[ 00001065 ] , cur_eip = 0080152a
+envid =[ 00001065 ] , cur_eip = 0080157f
+CPU 2: 547 [00001065] new env 00001066
+envid =[ 00001065 ] , cur_eip = 0080175b
+envid =[ 00001066 ] , cur_eip = 0080152a
+envid =[ 00001066 ] , cur_eip = 0080157f
+CPU 2: 557 [00001066] new env 00001067
+envid =[ 00001066 ] , cur_eip = 0080175b
+envid =[ 00001067 ] , cur_eip = 0080152a
+envid =[ 00001067 ] , cur_eip = 0080157f
+CPU 3: 563 [00001067] new env 00001068
+envid =[ 00001067 ] , cur_eip = 0080175b
+envid =[ 00001068 ] , cur_eip = 0080152a
+envid =[ 00001068 ] , cur_eip = 0080157f
+CPU 3: 569 [00001068] new env 00001069
+envid =[ 00001068 ] , cur_eip = 0080175b
+envid =[ 00001069 ] , cur_eip = 0080152a
+envid =[ 00001069 ] , cur_eip = 0080157f
+CPU 2: 571 [00001069] new env 0000106a
+envid =[ 00001069 ] , cur_eip = 0080175b
+envid =[ 0000106a ] , cur_eip = 0080152a
+envid =[ 0000106a ] , cur_eip = 0080157f
+CPU 1: 577 [0000106a] new env 0000106b
+envid =[ 0000106a ] , cur_eip = 0080175b
+envid =[ 0000106b ] , cur_eip = 0080152a
+envid =[ 0000106b ] , cur_eip = 0080157f
+CPU 0: 587 [0000106b] new env 0000106c
+envid =[ 0000106b ] , cur_eip = 0080175b
+envid =[ 0000106c ] , cur_eip = 0080152a
+envid =[ 0000106c ] , cur_eip = 0080157f
+CPU 3: 593 [0000106c] new env 0000106d
+envid =[ 0000106c ] , cur_eip = 0080175b
+envid =[ 0000106d ] , cur_eip = 0080152a
+envid =[ 0000106d ] , cur_eip = 0080157f
+CPU 2: 599 [0000106d] new env 0000106e
+envid =[ 0000106d ] , cur_eip = 0080175b
+envid =[ 0000106e ] , cur_eip = 0080152a
+envid =[ 0000106e ] , cur_eip = 0080157f
+CPU 1: 601 [0000106e] new env 0000106f
+envid =[ 0000106e ] , cur_eip = 0080175b
+envid =[ 0000106f ] , cur_eip = 0080152a
+envid =[ 0000106f ] , cur_eip = 0080157f
+CPU 3: 607 [0000106f] new env 00001070
+envid =[ 0000106f ] , cur_eip = 0080175b
+envid =[ 00001070 ] , cur_eip = 0080152a
+envid =[ 00001070 ] , cur_eip = 0080157f
+CPU 1: 613 [00001070] new env 00001071
+envid =[ 00001070 ] , cur_eip = 0080175b
+envid =[ 00001071 ] , cur_eip = 0080152a
+envid =[ 00001071 ] , cur_eip = 0080157f
+CPU 1: 617 [00001071] new env 00001072
+envid =[ 00001071 ] , cur_eip = 0080175b
+envid =[ 00001072 ] , cur_eip = 0080152a
+envid =[ 00001072 ] , cur_eip = 0080157f
+CPU 0: 619 [00001072] new env 00001073
+envid =[ 00001072 ] , cur_eip = 0080175b
+envid =[ 00001073 ] , cur_eip = 0080152a
+envid =[ 00001073 ] , cur_eip = 0080157f
+CPU 1: 631 [00001073] new env 00001074
+envid =[ 00001073 ] , cur_eip = 0080175b
+envid =[ 00001074 ] , cur_eip = 0080152a
+envid =[ 00001074 ] , cur_eip = 0080157f
+CPU 2: 641 [00001074] new env 00001075
+envid =[ 00001074 ] , cur_eip = 0080175b
+envid =[ 00001075 ] , cur_eip = 0080152a
+envid =[ 00001075 ] , cur_eip = 0080157f
+CPU 2: 643 [00001075] new env 00001076
+envid =[ 00001075 ] , cur_eip = 0080175b
+envid =[ 00001076 ] , cur_eip = 0080152a
+envid =[ 00001076 ] , cur_eip = 0080157f
+CPU 1: 647 [00001076] new env 00001077
+envid =[ 00001076 ] , cur_eip = 0080175b
+envid =[ 00001077 ] , cur_eip = 0080152a
+envid =[ 00001077 ] , cur_eip = 0080157f
+CPU 1: 653 [00001077] new env 00001078
+envid =[ 00001077 ] , cur_eip = 0080175b
+envid =[ 00001078 ] , cur_eip = 0080152a
+envid =[ 00001078 ] , cur_eip = 0080157f
+CPU 0: 659 [00001078] new env 00001079
+envid =[ 00001078 ] , cur_eip = 0080175b
+envid =[ 00001079 ] , cur_eip = 0080152a
+envid =[ 00001079 ] , cur_eip = 0080157f
+CPU 3: 661 [00001079] new env 0000107a
+envid =[ 00001079 ] , cur_eip = 0080175b
+envid =[ 0000107a ] , cur_eip = 0080152a
+envid =[ 0000107a ] , cur_eip = 0080157f
+CPU 0: 673 [0000107a] new env 0000107b
+envid =[ 0000107a ] , cur_eip = 0080175b
+envid =[ 0000107b ] , cur_eip = 0080152a
+envid =[ 0000107b ] , cur_eip = 0080157f
+CPU 2: 677 [0000107b] new env 0000107c
+envid =[ 0000107b ] , cur_eip = 0080175b
+envid =[ 0000107c ] , cur_eip = 0080152a
+envid =[ 0000107c ] , cur_eip = 0080157f
+CPU 1: 683 [0000107c] new env 0000107d
+envid =[ 0000107c ] , cur_eip = 0080175b
+envid =[ 0000107d ] , cur_eip = 0080152a
+envid =[ 0000107d ] , cur_eip = 0080157f
+CPU 3: 691 [0000107d] new env 0000107e
+envid =[ 0000107d ] , cur_eip = 0080175b
+envid =[ 0000107e ] , cur_eip = 0080152a
+envid =[ 0000107e ] , cur_eip = 0080157f
+CPU 0: 701 [0000107e] new env 0000107f
+envid =[ 0000107e ] , cur_eip = 0080175b
+envid =[ 0000107f ] , cur_eip = 0080152a
+envid =[ 0000107f ] , cur_eip = 0080157f
+CPU 1: 709 [0000107f] new env 00001080
+envid =[ 0000107f ] , cur_eip = 0080175b
+envid =[ 00001080 ] , cur_eip = 0080152a
+envid =[ 00001080 ] , cur_eip = 0080157f
+CPU 2: 719 [00001080] new env 00001081
+envid =[ 00001080 ] , cur_eip = 0080175b
+envid =[ 00001081 ] , cur_eip = 0080152a
+envid =[ 00001081 ] , cur_eip = 0080157f
+CPU 0: 727 [00001081] new env 00001082
+envid =[ 00001081 ] , cur_eip = 0080175b
+envid =[ 00001082 ] , cur_eip = 0080152a
+envid =[ 00001082 ] , cur_eip = 0080157f
+CPU 2: 733 [00001082] new env 00001083
+envid =[ 00001082 ] , cur_eip = 0080175b
+envid =[ 00001083 ] , cur_eip = 0080152a
+envid =[ 00001083 ] , cur_eip = 0080157f
+CPU 1: 739 [00001083] new env 00001084
+envid =[ 00001083 ] , cur_eip = 0080175b
+envid =[ 00001084 ] , cur_eip = 0080152a
+envid =[ 00001084 ] , cur_eip = 0080157f
+CPU 1: 743 [00001084] new env 00001085
+envid =[ 00001084 ] , cur_eip = 0080175b
+envid =[ 00001085 ] , cur_eip = 0080152a
+envid =[ 00001085 ] , cur_eip = 0080157f
+CPU 2: 751 [00001085] new env 00001086
+envid =[ 00001085 ] , cur_eip = 0080175b
+envid =[ 00001086 ] , cur_eip = 0080152a
+envid =[ 00001086 ] , cur_eip = 0080157f
+CPU 1: 757 [00001086] new env 00001087
+envid =[ 00001086 ] , cur_eip = 0080175b
+envid =[ 00001087 ] , cur_eip = 0080152a
+envid =[ 00001087 ] , cur_eip = 0080157f
+CPU 1: 761 [00001087] new env 00001088
+envid =[ 00001087 ] , cur_eip = 0080175b
+envid =[ 00001088 ] , cur_eip = 0080152a
+envid =[ 00001088 ] , cur_eip = 0080157f
+CPU 0: 769 [00001088] new env 00001089
+envid =[ 00001088 ] , cur_eip = 0080175b
+envid =[ 00001089 ] , cur_eip = 0080152a
+envid =[ 00001089 ] , cur_eip = 0080157f
+CPU 2: 773 [00001089] new env 0000108a
+envid =[ 00001089 ] , cur_eip = 0080175b
+envid =[ 0000108a ] , cur_eip = 0080152a
+envid =[ 0000108a ] , cur_eip = 0080157f
+CPU 3: 787 [0000108a] new env 0000108b
+envid =[ 0000108a ] , cur_eip = 0080175b
+envid =[ 0000108b ] , cur_eip = 0080152a
+envid =[ 0000108b ] , cur_eip = 0080157f
+CPU 0: 797 [0000108b] new env 0000108c
+envid =[ 0000108b ] , cur_eip = 0080175b
+envid =[ 0000108c ] , cur_eip = 0080152a
+envid =[ 0000108c ] , cur_eip = 0080157f
+CPU 3: 809 [0000108c] new env 0000108d
+envid =[ 0000108c ] , cur_eip = 0080175b
+envid =[ 0000108d ] , cur_eip = 0080152a
+envid =[ 0000108d ] , cur_eip = 0080157f
+CPU 2: 811 [0000108d] new env 0000108e
+envid =[ 0000108d ] , cur_eip = 0080175b
+envid =[ 0000108e ] , cur_eip = 0080152a
+envid =[ 0000108e ] , cur_eip = 0080157f
+CPU 0: 821 [0000108e] new env 0000108f
+envid =[ 0000108e ] , cur_eip = 0080175b
+envid =[ 0000108f ] , cur_eip = 0080152a
+envid =[ 0000108f ] , cur_eip = 0080157f
+CPU 0: 823 [0000108f] new env 00001090
+envid =[ 0000108f ] , cur_eip = 0080175b
+envid =[ 00001090 ] , cur_eip = 0080152a
+envid =[ 00001090 ] , cur_eip = 0080157f
+CPU 3: 827 [00001090] new env 00001091
+envid =[ 00001090 ] , cur_eip = 0080175b
+envid =[ 00001091 ] , cur_eip = 0080152a
+envid =[ 00001091 ] , cur_eip = 0080157f
+CPU 1: 829 [00001091] new env 00001092
+envid =[ 00001091 ] , cur_eip = 0080175b
+envid =[ 00001092 ] , cur_eip = 0080152a
+envid =[ 00001092 ] , cur_eip = 0080157f
+CPU 3: 839 [00001092] new env 00001093
+envid =[ 00001092 ] , cur_eip = 0080175b
+envid =[ 00001093 ] , cur_eip = 0080152a
+envid =[ 00001093 ] , cur_eip = 0080157f
+CPU 1: 853 [00001093] new env 00001094
+envid =[ 00001093 ] , cur_eip = 0080175b
+envid =[ 00001094 ] , cur_eip = 0080152a
+envid =[ 00001094 ] , cur_eip = 0080157f
+CPU 3: 857 [00001094] new env 00001095
+envid =[ 00001094 ] , cur_eip = 0080175b
+envid =[ 00001095 ] , cur_eip = 0080152a
+envid =[ 00001095 ] , cur_eip = 0080157f
+CPU 3: 859 [00001095] new env 00001096
+envid =[ 00001095 ] , cur_eip = 0080175b
+envid =[ 00001096 ] , cur_eip = 0080152a
+envid =[ 00001096 ] , cur_eip = 0080157f
+CPU 0: 863 [00001096] new env 00001097
+envid =[ 00001096 ] , cur_eip = 0080175b
+envid =[ 00001097 ] , cur_eip = 0080152a
+envid =[ 00001097 ] , cur_eip = 0080157f
+CPU 1: 877 [00001097] new env 00001098
+envid =[ 00001097 ] , cur_eip = 0080175b
+envid =[ 00001098 ] , cur_eip = 0080152a
+envid =[ 00001098 ] , cur_eip = 0080157f
+CPU 1: 881 [00001098] new env 00001099
+envid =[ 00001098 ] , cur_eip = 0080175b
+envid =[ 00001099 ] , cur_eip = 0080152a
+envid =[ 00001099 ] , cur_eip = 0080157f
+CPU 3: 883 [00001099] new env 0000109a
+envid =[ 00001099 ] , cur_eip = 0080175b
+envid =[ 0000109a ] , cur_eip = 0080152a
+envid =[ 0000109a ] , cur_eip = 0080157f
+CPU 2: 887 [0000109a] new env 0000109b
+envid =[ 0000109a ] , cur_eip = 0080175b
+envid =[ 0000109b ] , cur_eip = 0080152a
+envid =[ 0000109b ] , cur_eip = 0080157f
+CPU 0: 907 [0000109b] new env 0000109c
+envid =[ 0000109b ] , cur_eip = 0080175b
+envid =[ 0000109c ] , cur_eip = 0080152a
+envid =[ 0000109c ] , cur_eip = 0080157f
+CPU 1: 911 [0000109c] new env 0000109d
+envid =[ 0000109c ] , cur_eip = 0080175b
+envid =[ 0000109d ] , cur_eip = 0080152a
+envid =[ 0000109d ] , cur_eip = 0080157f
+CPU 2: 919 [0000109d] new env 0000109e
+envid =[ 0000109d ] , cur_eip = 0080175b
+envid =[ 0000109e ] , cur_eip = 0080152a
+envid =[ 0000109e ] , cur_eip = 0080157f
+CPU 1: 929 [0000109e] new env 0000109f
+envid =[ 0000109e ] , cur_eip = 0080175b
+envid =[ 0000109f ] , cur_eip = 0080152a
+envid =[ 0000109f ] , cur_eip = 0080157f
+CPU 2: 937 [0000109f] new env 000010a0
+envid =[ 0000109f ] , cur_eip = 0080175b
+envid =[ 000010a0 ] , cur_eip = 0080152a
+envid =[ 000010a0 ] , cur_eip = 0080157f
+CPU 2: 941 [000010a0] new env 000010a1
+envid =[ 000010a0 ] , cur_eip = 0080175b
+envid =[ 000010a1 ] , cur_eip = 0080152a
+envid =[ 000010a1 ] , cur_eip = 0080157f
+CPU 3: 947 [000010a1] new env 000010a2
+envid =[ 000010a1 ] , cur_eip = 0080175b
+envid =[ 000010a2 ] , cur_eip = 0080152a
+envid =[ 000010a2 ] , cur_eip = 0080157f
+CPU 1: 953 [000010a2] new env 000010a3
+envid =[ 000010a2 ] , cur_eip = 0080175b
+envid =[ 000010a3 ] , cur_eip = 0080152a
+envid =[ 000010a3 ] , cur_eip = 0080157f
+CPU 3: 967 [000010a3] new env 000010a4
+envid =[ 000010a3 ] , cur_eip = 0080175b
+envid =[ 000010a4 ] , cur_eip = 0080152a
+envid =[ 000010a4 ] , cur_eip = 0080157f
+CPU 1: 971 [000010a4] new env 000010a5
+envid =[ 000010a4 ] , cur_eip = 0080175b
+envid =[ 000010a5 ] , cur_eip = 0080152a
+envid =[ 000010a5 ] , cur_eip = 0080157f
+CPU 1: 977 [000010a5] new env 000010a6
+envid =[ 000010a5 ] , cur_eip = 0080175b
+envid =[ 000010a6 ] , cur_eip = 0080152a
+envid =[ 000010a6 ] , cur_eip = 0080157f
+CPU 0: 983 [000010a6] new env 000010a7
+envid =[ 000010a6 ] , cur_eip = 0080175b
+envid =[ 000010a7 ] , cur_eip = 0080152a
+envid =[ 000010a7 ] , cur_eip = 0080157f
+CPU 0: 991 [000010a7] new env 000010a8
+envid =[ 000010a7 ] , cur_eip = 0080175b
+envid =[ 000010a8 ] , cur_eip = 0080152a
+envid =[ 000010a8 ] , cur_eip = 0080157f
+CPU 2: 997 [000010a8] new env 000010a9
+envid =[ 000010a8 ] , cur_eip = 0080175b
+envid =[ 000010a9 ] , cur_eip = 0080152a
+envid =[ 000010a9 ] , cur_eip = 0080157f
+CPU 1: 1009 [000010a9] new env 000010aa
+envid =[ 000010a9 ] , cur_eip = 0080175b
+envid =[ 000010aa ] , cur_eip = 0080152a
+envid =[ 000010aa ] , cur_eip = 0080157f
+CPU 1: 1013 [000010aa] new env 000010ab
+envid =[ 000010aa ] , cur_eip = 0080175b
+envid =[ 000010ab ] , cur_eip = 0080152a
+envid =[ 000010ab ] , cur_eip = 0080157f
+CPU 2: 1019 [000010ab] new env 000010ac
+envid =[ 000010ab ] , cur_eip = 0080175b
+envid =[ 000010ac ] , cur_eip = 0080152a
+envid =[ 000010ac ] , cur_eip = 0080157f
+CPU 1: 1021 [000010ac] new env 000010ad
+envid =[ 000010ac ] , cur_eip = 0080175b
+envid =[ 000010ad ] , cur_eip = 0080152a
+envid =[ 000010ad ] , cur_eip = 0080157f
+CPU 3: 1031 [000010ad] new env 000010ae
+envid =[ 000010ad ] , cur_eip = 0080175b
+envid =[ 000010ae ] , cur_eip = 0080152a
+envid =[ 000010ae ] , cur_eip = 0080157f
+CPU 0: 1033 [000010ae] new env 000010af
+envid =[ 000010ae ] , cur_eip = 0080175b
+envid =[ 000010af ] , cur_eip = 0080152a
+envid =[ 000010af ] , cur_eip = 0080157f
+CPU 1: 1039 [000010af] new env 000010b0
+envid =[ 000010af ] , cur_eip = 0080175b
+envid =[ 000010b0 ] , cur_eip = 0080152a
+envid =[ 000010b0 ] , cur_eip = 0080157f
+CPU 3: 1049 [000010b0] new env 000010b1
+envid =[ 000010b0 ] , cur_eip = 0080175b
+envid =[ 000010b1 ] , cur_eip = 0080152a
+envid =[ 000010b1 ] , cur_eip = 0080157f
+CPU 1: 1051 [000010b1] new env 000010b2
+envid =[ 000010b1 ] , cur_eip = 0080175b
+envid =[ 000010b2 ] , cur_eip = 0080152a
+envid =[ 000010b2 ] , cur_eip = 0080157f
+CPU 1: 1061 [000010b2] new env 000010b3
+envid =[ 000010b2 ] , cur_eip = 0080175b
+envid =[ 000010b3 ] , cur_eip = 0080152a
+envid =[ 000010b3 ] , cur_eip = 0080157f
+CPU 0: 1063 [000010b3] new env 000010b4
+envid =[ 000010b3 ] , cur_eip = 0080175b
+envid =[ 000010b4 ] , cur_eip = 0080152a
+envid =[ 000010b4 ] , cur_eip = 0080157f
+CPU 0: 1069 [000010b4] new env 000010b5
+envid =[ 000010b4 ] , cur_eip = 0080175b
+envid =[ 000010b5 ] , cur_eip = 0080152a
+envid =[ 000010b5 ] , cur_eip = 0080157f
+CPU 0: 1087 [000010b5] new env 000010b6
+envid =[ 000010b5 ] , cur_eip = 0080175b
+envid =[ 000010b6 ] , cur_eip = 0080152a
+envid =[ 000010b6 ] , cur_eip = 0080157f
+CPU 1: 1091 [000010b6] new env 000010b7
+envid =[ 000010b6 ] , cur_eip = 0080175b
+envid =[ 000010b7 ] , cur_eip = 0080152a
+envid =[ 000010b7 ] , cur_eip = 0080157f
+CPU 0: 1093 [000010b7] new env 000010b8
+envid =[ 000010b7 ] , cur_eip = 0080175b
+envid =[ 000010b8 ] , cur_eip = 0080152a
+envid =[ 000010b8 ] , cur_eip = 0080157f
+CPU 0: 1097 [000010b8] new env 000010b9
+envid =[ 000010b8 ] , cur_eip = 0080175b
+envid =[ 000010b9 ] , cur_eip = 0080152a
+envid =[ 000010b9 ] , cur_eip = 0080157f
+CPU 0: 1103 [000010b9] new env 000010ba
+envid =[ 000010b9 ] , cur_eip = 0080175b
+envid =[ 000010ba ] , cur_eip = 0080152a
+envid =[ 000010ba ] , cur_eip = 0080157f
+CPU 2: 1109 [000010ba] new env 000010bb
+envid =[ 000010ba ] , cur_eip = 0080175b
+envid =[ 000010bb ] , cur_eip = 0080152a
+envid =[ 000010bb ] , cur_eip = 0080157f
+CPU 0: 1117 [000010bb] new env 000010bc
+envid =[ 000010bb ] , cur_eip = 0080175b
+envid =[ 000010bc ] , cur_eip = 0080152a
+envid =[ 000010bc ] , cur_eip = 0080157f
+CPU 2: 1123 [000010bc] new env 000010bd
+envid =[ 000010bc ] , cur_eip = 0080175b
+envid =[ 000010bd ] , cur_eip = 0080152a
+envid =[ 000010bd ] , cur_eip = 0080157f
+CPU 3: 1129 [000010bd] new env 000010be
+envid =[ 000010bd ] , cur_eip = 0080175b
+envid =[ 000010be ] , cur_eip = 0080152a
+envid =[ 000010be ] , cur_eip = 0080157f
+CPU 1: 1151 [000010be] new env 000010bf
+envid =[ 000010be ] , cur_eip = 0080175b
+envid =[ 000010bf ] , cur_eip = 0080152a
+envid =[ 000010bf ] , cur_eip = 0080157f
+CPU 2: 1153 [000010bf] new env 000010c0
+envid =[ 000010bf ] , cur_eip = 0080175b
+envid =[ 000010c0 ] , cur_eip = 0080152a
+envid =[ 000010c0 ] , cur_eip = 0080157f
+CPU 3: 1163 [000010c0] new env 000010c1
+envid =[ 000010c0 ] , cur_eip = 0080175b
+envid =[ 000010c1 ] , cur_eip = 0080152a
+envid =[ 000010c1 ] , cur_eip = 0080157f
+CPU 3: 1171 [000010c1] new env 000010c2
+envid =[ 000010c1 ] , cur_eip = 0080175b
+envid =[ 000010c2 ] , cur_eip = 0080152a
+envid =[ 000010c2 ] , cur_eip = 0080157f
+CPU 0: 1181 [000010c2] new env 000010c3
+envid =[ 000010c2 ] , cur_eip = 0080175b
+envid =[ 000010c3 ] , cur_eip = 0080152a
+envid =[ 000010c3 ] , cur_eip = 0080157f
+CPU 0: 1187 [000010c3] new env 000010c4
+envid =[ 000010c3 ] , cur_eip = 0080175b
+envid =[ 000010c4 ] , cur_eip = 0080152a
+envid =[ 000010c4 ] , cur_eip = 0080157f
+CPU 1: 1193 [000010c4] new env 000010c5
+envid =[ 000010c4 ] , cur_eip = 0080175b
+envid =[ 000010c5 ] , cur_eip = 0080152a
+envid =[ 000010c5 ] , cur_eip = 0080157f
+CPU 2: 1201 [000010c5] new env 000010c6
+envid =[ 000010c5 ] , cur_eip = 0080175b
+envid =[ 000010c6 ] , cur_eip = 0080152a
+envid =[ 000010c6 ] , cur_eip = 0080157f
+CPU 1: 1213 [000010c6] new env 000010c7
+envid =[ 000010c6 ] , cur_eip = 0080175b
+envid =[ 000010c7 ] , cur_eip = 0080152a
+envid =[ 000010c7 ] , cur_eip = 0080157f
+CPU 1: 1217 [000010c7] new env 000010c8
+envid =[ 000010c7 ] , cur_eip = 0080175b
+envid =[ 000010c8 ] , cur_eip = 0080152a
+envid =[ 000010c8 ] , cur_eip = 0080157f
+CPU 2: 1223 [000010c8] new env 000010c9
+envid =[ 000010c8 ] , cur_eip = 0080175b
+envid =[ 000010c9 ] , cur_eip = 0080152a
+envid =[ 000010c9 ] , cur_eip = 0080157f
+CPU 1: 1229 [000010c9] new env 000010ca
+envid =[ 000010c9 ] , cur_eip = 0080175b
+envid =[ 000010ca ] , cur_eip = 0080152a
+envid =[ 000010ca ] , cur_eip = 0080157f
+CPU 1: 1231 [000010ca] new env 000010cb
+envid =[ 000010ca ] , cur_eip = 0080175b
+envid =[ 000010cb ] , cur_eip = 0080152a
+envid =[ 000010cb ] , cur_eip = 0080157f
+CPU 0: 1237 [000010cb] new env 000010cc
+envid =[ 000010cb ] , cur_eip = 0080175b
+envid =[ 000010cc ] , cur_eip = 0080152a
+envid =[ 000010cc ] , cur_eip = 0080157f
+CPU 3: 1249 [000010cc] new env 000010cd
+envid =[ 000010cc ] , cur_eip = 0080175b
+envid =[ 000010cd ] , cur_eip = 0080152a
+envid =[ 000010cd ] , cur_eip = 0080157f
+CPU 0: 1259 [000010cd] new env 000010ce
+envid =[ 000010cd ] , cur_eip = 0080175b
+envid =[ 000010ce ] , cur_eip = 0080152a
+envid =[ 000010ce ] , cur_eip = 0080157f
+CPU 0: 1277 [000010ce] new env 000010cf
+envid =[ 000010ce ] , cur_eip = 0080175b
+envid =[ 000010cf ] , cur_eip = 0080152a
+envid =[ 000010cf ] , cur_eip = 0080157f
+CPU 0: 1279 [000010cf] new env 000010d0
+envid =[ 000010cf ] , cur_eip = 0080175b
+envid =[ 000010d0 ] , cur_eip = 0080152a
+envid =[ 000010d0 ] , cur_eip = 0080157f
+CPU 0: 1283 [000010d0] new env 000010d1
+envid =[ 000010d0 ] , cur_eip = 0080175b
+envid =[ 000010d1 ] , cur_eip = 0080152a
+envid =[ 000010d1 ] , cur_eip = 0080157f
+CPU 3: 1289 [000010d1] new env 000010d2
+envid =[ 000010d1 ] , cur_eip = 0080175b
+envid =[ 000010d2 ] , cur_eip = 0080152a
+envid =[ 000010d2 ] , cur_eip = 0080157f
+CPU 0: 1291 [000010d2] new env 000010d3
+envid =[ 000010d2 ] , cur_eip = 0080175b
+envid =[ 000010d3 ] , cur_eip = 0080152a
+envid =[ 000010d3 ] , cur_eip = 0080157f
+CPU 2: 1297 [000010d3] new env 000010d4
+envid =[ 000010d3 ] , cur_eip = 0080175b
+envid =[ 000010d4 ] , cur_eip = 0080152a
+envid =[ 000010d4 ] , cur_eip = 0080157f
+CPU 0: 1301 [000010d4] new env 000010d5
+envid =[ 000010d4 ] , cur_eip = 0080175b
+envid =[ 000010d5 ] , cur_eip = 0080152a
+envid =[ 000010d5 ] , cur_eip = 0080157f
+CPU 1: 1303 [000010d5] new env 000010d6
+envid =[ 000010d5 ] , cur_eip = 0080175b
+envid =[ 000010d6 ] , cur_eip = 0080152a
+envid =[ 000010d6 ] , cur_eip = 0080157f
+CPU 3: 1307 [000010d6] new env 000010d7
+envid =[ 000010d6 ] , cur_eip = 0080175b
+envid =[ 000010d7 ] , cur_eip = 0080152a
+envid =[ 000010d7 ] , cur_eip = 0080157f
+CPU 2: 1319 [000010d7] new env 000010d8
+envid =[ 000010d7 ] , cur_eip = 0080175b
+envid =[ 000010d8 ] , cur_eip = 0080152a
+envid =[ 000010d8 ] , cur_eip = 0080157f
+CPU 3: 1321 [000010d8] new env 000010d9
+envid =[ 000010d8 ] , cur_eip = 0080175b
+envid =[ 000010d9 ] , cur_eip = 0080152a
+envid =[ 000010d9 ] , cur_eip = 0080157f
+CPU 1: 1327 [000010d9] new env 000010da
+envid =[ 000010d9 ] , cur_eip = 0080175b
+envid =[ 000010da ] , cur_eip = 0080152a
+envid =[ 000010da ] , cur_eip = 0080157f
+CPU 2: 1361 [000010da] new env 000010db
+envid =[ 000010da ] , cur_eip = 0080175b
+envid =[ 000010db ] , cur_eip = 0080152a
+envid =[ 000010db ] , cur_eip = 0080157f
+CPU 3: 1367 [000010db] new env 000010dc
+envid =[ 000010db ] , cur_eip = 0080175b
+envid =[ 000010dc ] , cur_eip = 0080152a
+envid =[ 000010dc ] , cur_eip = 0080157f
+CPU 0: 1373 [000010dc] new env 000010dd
+envid =[ 000010dc ] , cur_eip = 0080175b
+envid =[ 000010dd ] , cur_eip = 0080152a
+envid =[ 000010dd ] , cur_eip = 0080157f
+CPU 0: 1381 [000010dd] new env 000010de
+envid =[ 000010dd ] , cur_eip = 0080175b
+envid =[ 000010de ] , cur_eip = 0080152a
+envid =[ 000010de ] , cur_eip = 0080157f
+CPU 3: 1399 [000010de] new env 000010df
+envid =[ 000010de ] , cur_eip = 0080175b
+envid =[ 000010df ] , cur_eip = 0080152a
+envid =[ 000010df ] , cur_eip = 0080157f
+CPU 2: 1409 [000010df] new env 000010e0
+envid =[ 000010df ] , cur_eip = 0080175b
+envid =[ 000010e0 ] , cur_eip = 0080152a
+envid =[ 000010e0 ] , cur_eip = 0080157f
+CPU 1: 1423 [000010e0] new env 000010e1
+envid =[ 000010e0 ] , cur_eip = 0080175b
+envid =[ 000010e1 ] , cur_eip = 0080152a
+envid =[ 000010e1 ] , cur_eip = 0080157f
+CPU 1: 1427 [000010e1] new env 000010e2
+envid =[ 000010e1 ] , cur_eip = 0080175b
+envid =[ 000010e2 ] , cur_eip = 0080152a
+envid =[ 000010e2 ] , cur_eip = 0080157f
+CPU 1: 1429 [000010e2] new env 000010e3
+envid =[ 000010e2 ] , cur_eip = 0080175b
+envid =[ 000010e3 ] , cur_eip = 0080152a
+envid =[ 000010e3 ] , cur_eip = 0080157f
+CPU 2: 1433 [000010e3] new env 000010e4
+envid =[ 000010e3 ] , cur_eip = 0080175b
+envid =[ 000010e4 ] , cur_eip = 0080152a
+envid =[ 000010e4 ] , cur_eip = 0080157f
+CPU 3: 1439 [000010e4] new env 000010e5
+envid =[ 000010e4 ] , cur_eip = 0080175b
+envid =[ 000010e5 ] , cur_eip = 0080152a
+envid =[ 000010e5 ] , cur_eip = 0080157f
+CPU 0: 1447 [000010e5] new env 000010e6
+envid =[ 000010e5 ] , cur_eip = 0080175b
+envid =[ 000010e6 ] , cur_eip = 0080152a
+envid =[ 000010e6 ] , cur_eip = 0080157f
+CPU 0: 1451 [000010e6] new env 000010e7
+envid =[ 000010e6 ] , cur_eip = 0080175b
+envid =[ 000010e7 ] , cur_eip = 0080152a
+envid =[ 000010e7 ] , cur_eip = 0080157f
+CPU 2: 1453 [000010e7] new env 000010e8
+envid =[ 000010e7 ] , cur_eip = 0080175b
+envid =[ 000010e8 ] , cur_eip = 0080152a
+envid =[ 000010e8 ] , cur_eip = 0080157f
+CPU 1: 1459 [000010e8] new env 000010e9
+envid =[ 000010e8 ] , cur_eip = 0080175b
+envid =[ 000010e9 ] , cur_eip = 0080152a
+envid =[ 000010e9 ] , cur_eip = 0080157f
+CPU 0: 1471 [000010e9] new env 000010ea
+envid =[ 000010e9 ] , cur_eip = 0080175b
+envid =[ 000010ea ] , cur_eip = 0080152a
+envid =[ 000010ea ] , cur_eip = 0080157f
+CPU 0: 1481 [000010ea] new env 000010eb
+envid =[ 000010ea ] , cur_eip = 0080175b
+envid =[ 000010eb ] , cur_eip = 0080152a
+envid =[ 000010eb ] , cur_eip = 0080157f
+CPU 3: 1483 [000010eb] new env 000010ec
+envid =[ 000010eb ] , cur_eip = 0080175b
+envid =[ 000010ec ] , cur_eip = 0080152a
+envid =[ 000010ec ] , cur_eip = 0080157f
+CPU 3: 1487 [000010ec] new env 000010ed
+envid =[ 000010ec ] , cur_eip = 0080175b
+envid =[ 000010ed ] , cur_eip = 0080152a
+envid =[ 000010ed ] , cur_eip = 0080157f
+CPU 0: 1489 [000010ed] new env 000010ee
+envid =[ 000010ed ] , cur_eip = 0080175b
+envid =[ 000010ee ] , cur_eip = 0080152a
+envid =[ 000010ee ] , cur_eip = 0080157f
+CPU 3: 1493 [000010ee] new env 000010ef
+envid =[ 000010ee ] , cur_eip = 0080175b
+envid =[ 000010ef ] , cur_eip = 0080152a
+envid =[ 000010ef ] , cur_eip = 0080157f
+CPU 1: 1499 [000010ef] new env 000010f0
+envid =[ 000010ef ] , cur_eip = 0080175b
+envid =[ 000010f0 ] , cur_eip = 0080152a
+envid =[ 000010f0 ] , cur_eip = 0080157f
+CPU 1: 1511 [000010f0] new env 000010f1
+envid =[ 000010f0 ] , cur_eip = 0080175b
+envid =[ 000010f1 ] , cur_eip = 0080152a
+envid =[ 000010f1 ] , cur_eip = 0080157f
+CPU 2: 1523 [000010f1] new env 000010f2
+envid =[ 000010f1 ] , cur_eip = 0080175b
+envid =[ 000010f2 ] , cur_eip = 0080152a
+envid =[ 000010f2 ] , cur_eip = 0080157f
+CPU 3: 1531 [000010f2] new env 000010f3
+envid =[ 000010f2 ] , cur_eip = 0080175b
+envid =[ 000010f3 ] , cur_eip = 0080152a
+envid =[ 000010f3 ] , cur_eip = 0080157f
+CPU 2: 1543 [000010f3] new env 000010f4
+envid =[ 000010f3 ] , cur_eip = 0080175b
+envid =[ 000010f4 ] , cur_eip = 0080152a
+envid =[ 000010f4 ] , cur_eip = 0080157f
+CPU 0: 1549 [000010f4] new env 000010f5
+envid =[ 000010f4 ] , cur_eip = 0080175b
+envid =[ 000010f5 ] , cur_eip = 0080152a
+envid =[ 000010f5 ] , cur_eip = 0080157f
+CPU 0: 1553 [000010f5] new env 000010f6
+envid =[ 000010f5 ] , cur_eip = 0080175b
+envid =[ 000010f6 ] , cur_eip = 0080152a
+envid =[ 000010f6 ] , cur_eip = 0080157f
+CPU 3: 1559 [000010f6] new env 000010f7
+envid =[ 000010f6 ] , cur_eip = 0080175b
+envid =[ 000010f7 ] , cur_eip = 0080152a
+envid =[ 000010f7 ] , cur_eip = 0080157f
+CPU 0: 1567 [000010f7] new env 000010f8
+envid =[ 000010f7 ] , cur_eip = 0080175b
+envid =[ 000010f8 ] , cur_eip = 0080152a
+envid =[ 000010f8 ] , cur_eip = 0080157f
+CPU 1: 1571 [000010f8] new env 000010f9
+envid =[ 000010f8 ] , cur_eip = 0080175b
+envid =[ 000010f9 ] , cur_eip = 0080152a
+envid =[ 000010f9 ] , cur_eip = 0080157f
+CPU 3: 1579 [000010f9] new env 000010fa
+envid =[ 000010f9 ] , cur_eip = 0080175b
+envid =[ 000010fa ] , cur_eip = 0080152a
+envid =[ 000010fa ] , cur_eip = 0080157f
+CPU 0: 1583 [000010fa] new env 000010fb
+envid =[ 000010fa ] , cur_eip = 0080175b
+envid =[ 000010fb ] , cur_eip = 0080152a
+envid =[ 000010fb ] , cur_eip = 0080157f
+CPU 1: 1597 [000010fb] new env 000010fc
+envid =[ 000010fb ] , cur_eip = 0080175b
+envid =[ 000010fc ] , cur_eip = 0080152a
+envid =[ 000010fc ] , cur_eip = 0080157f
+CPU 3: 1601 [000010fc] new env 000010fd
+envid =[ 000010fc ] , cur_eip = 0080175b
+envid =[ 000010fd ] , cur_eip = 0080152a
+envid =[ 000010fd ] , cur_eip = 0080157f
+CPU 2: 1607 [000010fd] new env 000010fe
+envid =[ 000010fd ] , cur_eip = 0080175b
+envid =[ 000010fe ] , cur_eip = 0080152a
+envid =[ 000010fe ] , cur_eip = 0080157f
+CPU 3: 1609 [000010fe] new env 000010ff
+envid =[ 000010fe ] , cur_eip = 0080175b
+envid =[ 000010ff ] , cur_eip = 0080152a
+envid =[ 000010ff ] , cur_eip = 0080157f
+CPU 3: 1613 [000010ff] new env 00001100
+envid =[ 000010ff ] , cur_eip = 0080175b
+envid =[ 00001100 ] , cur_eip = 0080152a
+envid =[ 00001100 ] , cur_eip = 0080157f
+CPU 0: 1619 [00001100] new env 00001101
+envid =[ 00001100 ] , cur_eip = 0080175b
+envid =[ 00001101 ] , cur_eip = 0080152a
+envid =[ 00001101 ] , cur_eip = 0080157f
+CPU 3: 1621 [00001101] new env 00001102
+envid =[ 00001101 ] , cur_eip = 0080175b
+envid =[ 00001102 ] , cur_eip = 0080152a
+envid =[ 00001102 ] , cur_eip = 0080157f
+CPU 3: 1627 [00001102] new env 00001103
+envid =[ 00001102 ] , cur_eip = 0080175b
+envid =[ 00001103 ] , cur_eip = 0080152a
+envid =[ 00001103 ] , cur_eip = 0080157f
+CPU 1: 1637 [00001103] new env 00001104
+envid =[ 00001103 ] , cur_eip = 0080175b
+envid =[ 00001104 ] , cur_eip = 0080152a
+envid =[ 00001104 ] , cur_eip = 0080157f
+CPU 1: 1657 [00001104] new env 00001105
+envid =[ 00001104 ] , cur_eip = 0080175b
+envid =[ 00001105 ] , cur_eip = 0080152a
+envid =[ 00001105 ] , cur_eip = 0080157f
+CPU 1: 1663 [00001105] new env 00001106
+envid =[ 00001105 ] , cur_eip = 0080175b
+envid =[ 00001106 ] , cur_eip = 0080152a
+envid =[ 00001106 ] , cur_eip = 0080157f
+CPU 3: 1667 [00001106] new env 00001107
+envid =[ 00001106 ] , cur_eip = 0080175b
+envid =[ 00001107 ] , cur_eip = 0080152a
+envid =[ 00001107 ] , cur_eip = 0080157f
+CPU 0: 1669 [00001107] new env 00001108
+envid =[ 00001107 ] , cur_eip = 0080175b
+envid =[ 00001108 ] , cur_eip = 0080152a
+envid =[ 00001108 ] , cur_eip = 0080157f
+CPU 2: 1693 [00001108] new env 00001109
+envid =[ 00001108 ] , cur_eip = 0080175b
+envid =[ 00001109 ] , cur_eip = 0080152a
+envid =[ 00001109 ] , cur_eip = 0080157f
+CPU 3: 1697 [00001109] new env 0000110a
+envid =[ 00001109 ] , cur_eip = 0080175b
+envid =[ 0000110a ] , cur_eip = 0080152a
+envid =[ 0000110a ] , cur_eip = 0080157f
+CPU 0: 1699 [0000110a] new env 0000110b
+envid =[ 0000110a ] , cur_eip = 0080175b
+envid =[ 0000110b ] , cur_eip = 0080152a
+envid =[ 0000110b ] , cur_eip = 0080157f
+CPU 1: 1709 [0000110b] new env 0000110c
+envid =[ 0000110b ] , cur_eip = 0080175b
+envid =[ 0000110c ] , cur_eip = 0080152a
+envid =[ 0000110c ] , cur_eip = 0080157f
+CPU 2: 1721 [0000110c] new env 0000110d
+envid =[ 0000110c ] , cur_eip = 0080175b
+envid =[ 0000110d ] , cur_eip = 0080152a
+envid =[ 0000110d ] , cur_eip = 0080157f
+CPU 0: 1723 [0000110d] new env 0000110e
+envid =[ 0000110d ] , cur_eip = 0080175b
+envid =[ 0000110e ] , cur_eip = 0080152a
+envid =[ 0000110e ] , cur_eip = 0080157f
+CPU 3: 1733 [0000110e] new env 0000110f
+envid =[ 0000110e ] , cur_eip = 0080175b
+envid =[ 0000110f ] , cur_eip = 0080152a
+envid =[ 0000110f ] , cur_eip = 0080157f
+CPU 3: 1741 [0000110f] new env 00001110
+envid =[ 0000110f ] , cur_eip = 0080175b
+envid =[ 00001110 ] , cur_eip = 0080152a
+envid =[ 00001110 ] , cur_eip = 0080157f
+CPU 0: 1747 [00001110] new env 00001111
+envid =[ 00001110 ] , cur_eip = 0080175b
+envid =[ 00001111 ] , cur_eip = 0080152a
+envid =[ 00001111 ] , cur_eip = 0080157f
+CPU 3: 1753 [00001111] new env 00001112
+envid =[ 00001111 ] , cur_eip = 0080175b
+envid =[ 00001112 ] , cur_eip = 0080152a
+envid =[ 00001112 ] , cur_eip = 0080157f
+CPU 3: 1759 [00001112] new env 00001113
+envid =[ 00001112 ] , cur_eip = 0080175b
+envid =[ 00001113 ] , cur_eip = 0080152a
+envid =[ 00001113 ] , cur_eip = 0080157f
+CPU 0: 1777 [00001113] new env 00001114
+envid =[ 00001113 ] , cur_eip = 0080175b
+envid =[ 00001114 ] , cur_eip = 0080152a
+envid =[ 00001114 ] , cur_eip = 0080157f
+CPU 1: 1783 [00001114] new env 00001115
+envid =[ 00001114 ] , cur_eip = 0080175b
+envid =[ 00001115 ] , cur_eip = 0080152a
+envid =[ 00001115 ] , cur_eip = 0080157f
+CPU 1: 1787 [00001115] new env 00001116
+envid =[ 00001115 ] , cur_eip = 0080175b
+envid =[ 00001116 ] , cur_eip = 0080152a
+envid =[ 00001116 ] , cur_eip = 0080157f
+CPU 0: 1789 [00001116] new env 00001117
+envid =[ 00001116 ] , cur_eip = 0080175b
+envid =[ 00001117 ] , cur_eip = 0080152a
+envid =[ 00001117 ] , cur_eip = 0080157f
+CPU 3: 1801 [00001117] new env 00001118
+envid =[ 00001117 ] , cur_eip = 0080175b
+envid =[ 00001118 ] , cur_eip = 0080152a
+envid =[ 00001118 ] , cur_eip = 0080157f
+CPU 0: 1811 [00001118] new env 00001119
+envid =[ 00001118 ] , cur_eip = 0080175b
+envid =[ 00001119 ] , cur_eip = 0080152a
+envid =[ 00001119 ] , cur_eip = 0080157f
+CPU 1: 1823 [00001119] new env 0000111a
+envid =[ 00001119 ] , cur_eip = 0080175b
+envid =[ 0000111a ] , cur_eip = 0080152a
+envid =[ 0000111a ] , cur_eip = 0080157f
+CPU 3: 1831 [0000111a] new env 0000111b
+envid =[ 0000111a ] , cur_eip = 0080175b
+envid =[ 0000111b ] , cur_eip = 0080152a
+envid =[ 0000111b ] , cur_eip = 0080157f
+CPU 0: 1847 [0000111b] new env 0000111c
+envid =[ 0000111b ] , cur_eip = 0080175b
+envid =[ 0000111c ] , cur_eip = 0080152a
+envid =[ 0000111c ] , cur_eip = 0080157f
+CPU 2: 1861 [0000111c] new env 0000111d
+envid =[ 0000111c ] , cur_eip = 0080175b
+envid =[ 0000111d ] , cur_eip = 0080152a
+envid =[ 0000111d ] , cur_eip = 0080157f
+CPU 1: 1867 [0000111d] new env 0000111e
+envid =[ 0000111d ] , cur_eip = 0080175b
+envid =[ 0000111e ] , cur_eip = 0080152a
+envid =[ 0000111e ] , cur_eip = 0080157f
+CPU 3: 1871 [0000111e] new env 0000111f
+envid =[ 0000111e ] , cur_eip = 0080175b
+envid =[ 0000111f ] , cur_eip = 0080152a
+envid =[ 0000111f ] , cur_eip = 0080157f
+CPU 0: 1873 [0000111f] new env 00001120
+envid =[ 0000111f ] , cur_eip = 0080175b
+envid =[ 00001120 ] , cur_eip = 0080152a
+envid =[ 00001120 ] , cur_eip = 0080157f
+CPU 3: 1877 [00001120] new env 00001121
+envid =[ 00001120 ] , cur_eip = 0080175b
+envid =[ 00001121 ] , cur_eip = 0080152a
+envid =[ 00001121 ] , cur_eip = 0080157f
+qemu: terminating on signal 15 from pid 5814
