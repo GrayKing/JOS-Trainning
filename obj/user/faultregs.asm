@@ -55,7 +55,7 @@ check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,
   80004b:	c7 44 24 04 91 1b 80 	movl   $0x801b91,0x4(%esp)
   800052:	00 
   800053:	c7 04 24 60 1b 80 00 	movl   $0x801b60,(%esp)
-  80005a:	e8 8b 06 00 00       	call   8006ea <cprintf>
+  80005a:	e8 8f 06 00 00       	call   8006ee <cprintf>
 			cprintf("MISMATCH\n");				\
 			mismatch = 1;					\
 		}							\
@@ -69,12 +69,12 @@ check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,
   80006b:	c7 44 24 04 70 1b 80 	movl   $0x801b70,0x4(%esp)
   800072:	00 
   800073:	c7 04 24 74 1b 80 00 	movl   $0x801b74,(%esp)
-  80007a:	e8 6b 06 00 00       	call   8006ea <cprintf>
+  80007a:	e8 6f 06 00 00       	call   8006ee <cprintf>
   80007f:	8b 03                	mov    (%ebx),%eax
   800081:	39 06                	cmp    %eax,(%esi)
   800083:	75 13                	jne    800098 <check_regs+0x65>
   800085:	c7 04 24 84 1b 80 00 	movl   $0x801b84,(%esp)
-  80008c:	e8 59 06 00 00       	call   8006ea <cprintf>
+  80008c:	e8 5d 06 00 00       	call   8006ee <cprintf>
 
 static void
 check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,
@@ -90,7 +90,7 @@ check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,
 
 	CHECK(edi, regs.reg_edi);
   800098:	c7 04 24 88 1b 80 00 	movl   $0x801b88,(%esp)
-  80009f:	e8 46 06 00 00       	call   8006ea <cprintf>
+  80009f:	e8 4a 06 00 00       	call   8006ee <cprintf>
   8000a4:	bf 01 00 00 00       	mov    $0x1,%edi
 	CHECK(esi, regs.reg_esi);
   8000a9:	8b 43 04             	mov    0x4(%ebx),%eax
@@ -100,15 +100,15 @@ check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,
   8000b7:	c7 44 24 04 92 1b 80 	movl   $0x801b92,0x4(%esp)
   8000be:	00 
   8000bf:	c7 04 24 74 1b 80 00 	movl   $0x801b74,(%esp)
-  8000c6:	e8 1f 06 00 00       	call   8006ea <cprintf>
+  8000c6:	e8 23 06 00 00       	call   8006ee <cprintf>
   8000cb:	8b 43 04             	mov    0x4(%ebx),%eax
   8000ce:	39 46 04             	cmp    %eax,0x4(%esi)
   8000d1:	75 0e                	jne    8000e1 <check_regs+0xae>
   8000d3:	c7 04 24 84 1b 80 00 	movl   $0x801b84,(%esp)
-  8000da:	e8 0b 06 00 00       	call   8006ea <cprintf>
+  8000da:	e8 0f 06 00 00       	call   8006ee <cprintf>
   8000df:	eb 11                	jmp    8000f2 <check_regs+0xbf>
   8000e1:	c7 04 24 88 1b 80 00 	movl   $0x801b88,(%esp)
-  8000e8:	e8 fd 05 00 00       	call   8006ea <cprintf>
+  8000e8:	e8 01 06 00 00       	call   8006ee <cprintf>
   8000ed:	bf 01 00 00 00       	mov    $0x1,%edi
 	CHECK(ebp, regs.reg_ebp);
   8000f2:	8b 43 08             	mov    0x8(%ebx),%eax
@@ -118,15 +118,15 @@ check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,
   800100:	c7 44 24 04 96 1b 80 	movl   $0x801b96,0x4(%esp)
   800107:	00 
   800108:	c7 04 24 74 1b 80 00 	movl   $0x801b74,(%esp)
-  80010f:	e8 d6 05 00 00       	call   8006ea <cprintf>
+  80010f:	e8 da 05 00 00       	call   8006ee <cprintf>
   800114:	8b 43 08             	mov    0x8(%ebx),%eax
   800117:	39 46 08             	cmp    %eax,0x8(%esi)
   80011a:	75 0e                	jne    80012a <check_regs+0xf7>
   80011c:	c7 04 24 84 1b 80 00 	movl   $0x801b84,(%esp)
-  800123:	e8 c2 05 00 00       	call   8006ea <cprintf>
+  800123:	e8 c6 05 00 00       	call   8006ee <cprintf>
   800128:	eb 11                	jmp    80013b <check_regs+0x108>
   80012a:	c7 04 24 88 1b 80 00 	movl   $0x801b88,(%esp)
-  800131:	e8 b4 05 00 00       	call   8006ea <cprintf>
+  800131:	e8 b8 05 00 00       	call   8006ee <cprintf>
   800136:	bf 01 00 00 00       	mov    $0x1,%edi
 	CHECK(ebx, regs.reg_ebx);
   80013b:	8b 43 10             	mov    0x10(%ebx),%eax
@@ -136,15 +136,15 @@ check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,
   800149:	c7 44 24 04 9a 1b 80 	movl   $0x801b9a,0x4(%esp)
   800150:	00 
   800151:	c7 04 24 74 1b 80 00 	movl   $0x801b74,(%esp)
-  800158:	e8 8d 05 00 00       	call   8006ea <cprintf>
+  800158:	e8 91 05 00 00       	call   8006ee <cprintf>
   80015d:	8b 43 10             	mov    0x10(%ebx),%eax
   800160:	39 46 10             	cmp    %eax,0x10(%esi)
   800163:	75 0e                	jne    800173 <check_regs+0x140>
   800165:	c7 04 24 84 1b 80 00 	movl   $0x801b84,(%esp)
-  80016c:	e8 79 05 00 00       	call   8006ea <cprintf>
+  80016c:	e8 7d 05 00 00       	call   8006ee <cprintf>
   800171:	eb 11                	jmp    800184 <check_regs+0x151>
   800173:	c7 04 24 88 1b 80 00 	movl   $0x801b88,(%esp)
-  80017a:	e8 6b 05 00 00       	call   8006ea <cprintf>
+  80017a:	e8 6f 05 00 00       	call   8006ee <cprintf>
   80017f:	bf 01 00 00 00       	mov    $0x1,%edi
 	CHECK(edx, regs.reg_edx);
   800184:	8b 43 14             	mov    0x14(%ebx),%eax
@@ -154,15 +154,15 @@ check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,
   800192:	c7 44 24 04 9e 1b 80 	movl   $0x801b9e,0x4(%esp)
   800199:	00 
   80019a:	c7 04 24 74 1b 80 00 	movl   $0x801b74,(%esp)
-  8001a1:	e8 44 05 00 00       	call   8006ea <cprintf>
+  8001a1:	e8 48 05 00 00       	call   8006ee <cprintf>
   8001a6:	8b 43 14             	mov    0x14(%ebx),%eax
   8001a9:	39 46 14             	cmp    %eax,0x14(%esi)
   8001ac:	75 0e                	jne    8001bc <check_regs+0x189>
   8001ae:	c7 04 24 84 1b 80 00 	movl   $0x801b84,(%esp)
-  8001b5:	e8 30 05 00 00       	call   8006ea <cprintf>
+  8001b5:	e8 34 05 00 00       	call   8006ee <cprintf>
   8001ba:	eb 11                	jmp    8001cd <check_regs+0x19a>
   8001bc:	c7 04 24 88 1b 80 00 	movl   $0x801b88,(%esp)
-  8001c3:	e8 22 05 00 00       	call   8006ea <cprintf>
+  8001c3:	e8 26 05 00 00       	call   8006ee <cprintf>
   8001c8:	bf 01 00 00 00       	mov    $0x1,%edi
 	CHECK(ecx, regs.reg_ecx);
   8001cd:	8b 43 18             	mov    0x18(%ebx),%eax
@@ -172,15 +172,15 @@ check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,
   8001db:	c7 44 24 04 a2 1b 80 	movl   $0x801ba2,0x4(%esp)
   8001e2:	00 
   8001e3:	c7 04 24 74 1b 80 00 	movl   $0x801b74,(%esp)
-  8001ea:	e8 fb 04 00 00       	call   8006ea <cprintf>
+  8001ea:	e8 ff 04 00 00       	call   8006ee <cprintf>
   8001ef:	8b 43 18             	mov    0x18(%ebx),%eax
   8001f2:	39 46 18             	cmp    %eax,0x18(%esi)
   8001f5:	75 0e                	jne    800205 <check_regs+0x1d2>
   8001f7:	c7 04 24 84 1b 80 00 	movl   $0x801b84,(%esp)
-  8001fe:	e8 e7 04 00 00       	call   8006ea <cprintf>
+  8001fe:	e8 eb 04 00 00       	call   8006ee <cprintf>
   800203:	eb 11                	jmp    800216 <check_regs+0x1e3>
   800205:	c7 04 24 88 1b 80 00 	movl   $0x801b88,(%esp)
-  80020c:	e8 d9 04 00 00       	call   8006ea <cprintf>
+  80020c:	e8 dd 04 00 00       	call   8006ee <cprintf>
   800211:	bf 01 00 00 00       	mov    $0x1,%edi
 	CHECK(eax, regs.reg_eax);
   800216:	8b 43 1c             	mov    0x1c(%ebx),%eax
@@ -190,15 +190,15 @@ check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,
   800224:	c7 44 24 04 a6 1b 80 	movl   $0x801ba6,0x4(%esp)
   80022b:	00 
   80022c:	c7 04 24 74 1b 80 00 	movl   $0x801b74,(%esp)
-  800233:	e8 b2 04 00 00       	call   8006ea <cprintf>
+  800233:	e8 b6 04 00 00       	call   8006ee <cprintf>
   800238:	8b 43 1c             	mov    0x1c(%ebx),%eax
   80023b:	39 46 1c             	cmp    %eax,0x1c(%esi)
   80023e:	75 0e                	jne    80024e <check_regs+0x21b>
   800240:	c7 04 24 84 1b 80 00 	movl   $0x801b84,(%esp)
-  800247:	e8 9e 04 00 00       	call   8006ea <cprintf>
+  800247:	e8 a2 04 00 00       	call   8006ee <cprintf>
   80024c:	eb 11                	jmp    80025f <check_regs+0x22c>
   80024e:	c7 04 24 88 1b 80 00 	movl   $0x801b88,(%esp)
-  800255:	e8 90 04 00 00       	call   8006ea <cprintf>
+  800255:	e8 94 04 00 00       	call   8006ee <cprintf>
   80025a:	bf 01 00 00 00       	mov    $0x1,%edi
 	CHECK(eip, eip);
   80025f:	8b 43 20             	mov    0x20(%ebx),%eax
@@ -208,15 +208,15 @@ check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,
   80026d:	c7 44 24 04 aa 1b 80 	movl   $0x801baa,0x4(%esp)
   800274:	00 
   800275:	c7 04 24 74 1b 80 00 	movl   $0x801b74,(%esp)
-  80027c:	e8 69 04 00 00       	call   8006ea <cprintf>
+  80027c:	e8 6d 04 00 00       	call   8006ee <cprintf>
   800281:	8b 43 20             	mov    0x20(%ebx),%eax
   800284:	39 46 20             	cmp    %eax,0x20(%esi)
   800287:	75 0e                	jne    800297 <check_regs+0x264>
   800289:	c7 04 24 84 1b 80 00 	movl   $0x801b84,(%esp)
-  800290:	e8 55 04 00 00       	call   8006ea <cprintf>
+  800290:	e8 59 04 00 00       	call   8006ee <cprintf>
   800295:	eb 11                	jmp    8002a8 <check_regs+0x275>
   800297:	c7 04 24 88 1b 80 00 	movl   $0x801b88,(%esp)
-  80029e:	e8 47 04 00 00       	call   8006ea <cprintf>
+  80029e:	e8 4b 04 00 00       	call   8006ee <cprintf>
   8002a3:	bf 01 00 00 00       	mov    $0x1,%edi
 	CHECK(eflags, eflags);
   8002a8:	8b 43 24             	mov    0x24(%ebx),%eax
@@ -226,15 +226,15 @@ check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,
   8002b6:	c7 44 24 04 ae 1b 80 	movl   $0x801bae,0x4(%esp)
   8002bd:	00 
   8002be:	c7 04 24 74 1b 80 00 	movl   $0x801b74,(%esp)
-  8002c5:	e8 20 04 00 00       	call   8006ea <cprintf>
+  8002c5:	e8 24 04 00 00       	call   8006ee <cprintf>
   8002ca:	8b 43 24             	mov    0x24(%ebx),%eax
   8002cd:	39 46 24             	cmp    %eax,0x24(%esi)
   8002d0:	75 0e                	jne    8002e0 <check_regs+0x2ad>
   8002d2:	c7 04 24 84 1b 80 00 	movl   $0x801b84,(%esp)
-  8002d9:	e8 0c 04 00 00       	call   8006ea <cprintf>
+  8002d9:	e8 10 04 00 00       	call   8006ee <cprintf>
   8002de:	eb 11                	jmp    8002f1 <check_regs+0x2be>
   8002e0:	c7 04 24 88 1b 80 00 	movl   $0x801b88,(%esp)
-  8002e7:	e8 fe 03 00 00       	call   8006ea <cprintf>
+  8002e7:	e8 02 04 00 00       	call   8006ee <cprintf>
   8002ec:	bf 01 00 00 00       	mov    $0x1,%edi
 	CHECK(esp, esp);
   8002f1:	8b 43 28             	mov    0x28(%ebx),%eax
@@ -244,12 +244,12 @@ check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,
   8002ff:	c7 44 24 04 b5 1b 80 	movl   $0x801bb5,0x4(%esp)
   800306:	00 
   800307:	c7 04 24 74 1b 80 00 	movl   $0x801b74,(%esp)
-  80030e:	e8 d7 03 00 00       	call   8006ea <cprintf>
+  80030e:	e8 db 03 00 00       	call   8006ee <cprintf>
   800313:	8b 43 28             	mov    0x28(%ebx),%eax
   800316:	39 46 28             	cmp    %eax,0x28(%esi)
   800319:	75 25                	jne    800340 <check_regs+0x30d>
   80031b:	c7 04 24 84 1b 80 00 	movl   $0x801b84,(%esp)
-  800322:	e8 c3 03 00 00       	call   8006ea <cprintf>
+  800322:	e8 c7 03 00 00       	call   8006ee <cprintf>
 
 #undef CHECK
 
@@ -257,7 +257,7 @@ check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,
   800327:	8b 45 0c             	mov    0xc(%ebp),%eax
   80032a:	89 44 24 04          	mov    %eax,0x4(%esp)
   80032e:	c7 04 24 b9 1b 80 00 	movl   $0x801bb9,(%esp)
-  800335:	e8 b0 03 00 00       	call   8006ea <cprintf>
+  800335:	e8 b4 03 00 00       	call   8006ee <cprintf>
 	if (!mismatch)
   80033a:	85 ff                	test   %edi,%edi
   80033c:	74 23                	je     800361 <check_regs+0x32e>
@@ -269,7 +269,7 @@ check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,
 	CHECK(eflags, eflags);
 	CHECK(esp, esp);
   800340:	c7 04 24 88 1b 80 00 	movl   $0x801b88,(%esp)
-  800347:	e8 9e 03 00 00       	call   8006ea <cprintf>
+  800347:	e8 a2 03 00 00       	call   8006ee <cprintf>
 
 #undef CHECK
 
@@ -277,17 +277,17 @@ check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,
   80034c:	8b 45 0c             	mov    0xc(%ebp),%eax
   80034f:	89 44 24 04          	mov    %eax,0x4(%esp)
   800353:	c7 04 24 b9 1b 80 00 	movl   $0x801bb9,(%esp)
-  80035a:	e8 8b 03 00 00       	call   8006ea <cprintf>
+  80035a:	e8 8f 03 00 00       	call   8006ee <cprintf>
   80035f:	eb 0e                	jmp    80036f <check_regs+0x33c>
 	if (!mismatch)
 		cprintf("OK\n");
   800361:	c7 04 24 84 1b 80 00 	movl   $0x801b84,(%esp)
-  800368:	e8 7d 03 00 00       	call   8006ea <cprintf>
+  800368:	e8 81 03 00 00       	call   8006ee <cprintf>
   80036d:	eb 0c                	jmp    80037b <check_regs+0x348>
 	else
 		cprintf("MISMATCH\n");
   80036f:	c7 04 24 88 1b 80 00 	movl   $0x801b88,(%esp)
-  800376:	e8 6f 03 00 00       	call   8006ea <cprintf>
+  800376:	e8 73 03 00 00       	call   8006ee <cprintf>
 }
   80037b:	83 c4 1c             	add    $0x1c,%esp
   80037e:	5b                   	pop    %ebx
@@ -320,7 +320,7 @@ pgfault(struct UTrapframe *utf)
   8003a9:	c7 44 24 04 51 00 00 	movl   $0x51,0x4(%esp)
   8003b0:	00 
   8003b1:	c7 04 24 c7 1b 80 00 	movl   $0x801bc7,(%esp)
-  8003b8:	e8 34 02 00 00       	call   8005f1 <_panic>
+  8003b8:	e8 38 02 00 00       	call   8005f5 <_panic>
 		      utf->utf_fault_va, utf->utf_eip);
 
 	// Check registers in UTrapframe
@@ -376,7 +376,7 @@ pgfault(struct UTrapframe *utf)
   80046e:	c7 44 24 04 5c 00 00 	movl   $0x5c,0x4(%esp)
   800475:	00 
   800476:	c7 04 24 c7 1b 80 00 	movl   $0x801bc7,(%esp)
-  80047d:	e8 6f 01 00 00       	call   8005f1 <_panic>
+  80047d:	e8 73 01 00 00       	call   8005f5 <_panic>
 }
   800482:	c9                   	leave  
   800483:	c3                   	ret    
@@ -445,7 +445,7 @@ umain(int argc, char **argv)
   800558:	74 0c                	je     800566 <umain+0xe2>
 		cprintf("EIP after page-fault MISMATCH\n");
   80055a:	c7 04 24 54 1c 80 00 	movl   $0x801c54,(%esp)
-  800561:	e8 84 01 00 00       	call   8006ea <cprintf>
+  800561:	e8 88 01 00 00       	call   8006ee <cprintf>
 	after.eip = before.eip;
   800566:	a1 c0 30 80 00       	mov    0x8030c0,%eax
   80056b:	a3 40 30 80 00       	mov    %eax,0x803040
@@ -481,198 +481,197 @@ libmain(int argc, char **argv)
 	thisenv = ( ( struct Env * ) envs ) + ENVX(sys_getenvid());
   8005a3:	e8 4d 10 00 00       	call   8015f5 <sys_getenvid>
   8005a8:	25 ff 03 00 00       	and    $0x3ff,%eax
-  8005ad:	6b c0 7c             	imul   $0x7c,%eax,%eax
-  8005b0:	05 00 00 c0 ee       	add    $0xeec00000,%eax
-  8005b5:	a3 cc 30 80 00       	mov    %eax,0x8030cc
+  8005ad:	89 c2                	mov    %eax,%edx
+  8005af:	c1 e2 07             	shl    $0x7,%edx
+  8005b2:	8d 84 c2 00 00 c0 ee 	lea    -0x11400000(%edx,%eax,8),%eax
+  8005b9:	a3 cc 30 80 00       	mov    %eax,0x8030cc
 
 	// save the name of the program so that panic() can use it
 	if (argc > 0)
-  8005ba:	85 db                	test   %ebx,%ebx
-  8005bc:	7e 07                	jle    8005c5 <libmain+0x30>
+  8005be:	85 db                	test   %ebx,%ebx
+  8005c0:	7e 07                	jle    8005c9 <libmain+0x34>
 		binaryname = argv[0];
-  8005be:	8b 06                	mov    (%esi),%eax
-  8005c0:	a3 00 30 80 00       	mov    %eax,0x803000
+  8005c2:	8b 06                	mov    (%esi),%eax
+  8005c4:	a3 00 30 80 00       	mov    %eax,0x803000
 
 	// call user main routine
 	umain(argc, argv);
-  8005c5:	89 74 24 04          	mov    %esi,0x4(%esp)
-  8005c9:	89 1c 24             	mov    %ebx,(%esp)
-  8005cc:	e8 b3 fe ff ff       	call   800484 <umain>
+  8005c9:	89 74 24 04          	mov    %esi,0x4(%esp)
+  8005cd:	89 1c 24             	mov    %ebx,(%esp)
+  8005d0:	e8 af fe ff ff       	call   800484 <umain>
 
 	// exit gracefully
 	exit();
-  8005d1:	e8 07 00 00 00       	call   8005dd <exit>
+  8005d5:	e8 07 00 00 00       	call   8005e1 <exit>
 }
-  8005d6:	83 c4 10             	add    $0x10,%esp
-  8005d9:	5b                   	pop    %ebx
-  8005da:	5e                   	pop    %esi
-  8005db:	5d                   	pop    %ebp
-  8005dc:	c3                   	ret    
+  8005da:	83 c4 10             	add    $0x10,%esp
+  8005dd:	5b                   	pop    %ebx
+  8005de:	5e                   	pop    %esi
+  8005df:	5d                   	pop    %ebp
+  8005e0:	c3                   	ret    
 
-008005dd <exit>:
+008005e1 <exit>:
 
 #include <inc/lib.h>
 
 void
 exit(void)
 {
-  8005dd:	55                   	push   %ebp
-  8005de:	89 e5                	mov    %esp,%ebp
-  8005e0:	83 ec 18             	sub    $0x18,%esp
+  8005e1:	55                   	push   %ebp
+  8005e2:	89 e5                	mov    %esp,%ebp
+  8005e4:	83 ec 18             	sub    $0x18,%esp
 	sys_env_destroy(0);
-  8005e3:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
-  8005ea:	e8 b4 0f 00 00       	call   8015a3 <sys_env_destroy>
+  8005e7:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  8005ee:	e8 b0 0f 00 00       	call   8015a3 <sys_env_destroy>
 }
-  8005ef:	c9                   	leave  
-  8005f0:	c3                   	ret    
+  8005f3:	c9                   	leave  
+  8005f4:	c3                   	ret    
 
-008005f1 <_panic>:
+008005f5 <_panic>:
  * It prints "panic: <message>", then causes a breakpoint exception,
  * which causes JOS to enter the JOS kernel monitor.
  */
 void
 _panic(const char *file, int line, const char *fmt, ...)
 {
-  8005f1:	55                   	push   %ebp
-  8005f2:	89 e5                	mov    %esp,%ebp
-  8005f4:	56                   	push   %esi
-  8005f5:	53                   	push   %ebx
-  8005f6:	83 ec 20             	sub    $0x20,%esp
+  8005f5:	55                   	push   %ebp
+  8005f6:	89 e5                	mov    %esp,%ebp
+  8005f8:	56                   	push   %esi
+  8005f9:	53                   	push   %ebx
+  8005fa:	83 ec 20             	sub    $0x20,%esp
 	va_list ap;
 
 	va_start(ap, fmt);
-  8005f9:	8d 5d 14             	lea    0x14(%ebp),%ebx
+  8005fd:	8d 5d 14             	lea    0x14(%ebp),%ebx
 
 	// Print the panic message
 	cprintf("[%08x] user panic in %s at %s:%d: ",
-  8005fc:	8b 35 00 30 80 00    	mov    0x803000,%esi
-  800602:	e8 ee 0f 00 00       	call   8015f5 <sys_getenvid>
-  800607:	8b 55 0c             	mov    0xc(%ebp),%edx
-  80060a:	89 54 24 10          	mov    %edx,0x10(%esp)
-  80060e:	8b 55 08             	mov    0x8(%ebp),%edx
-  800611:	89 54 24 0c          	mov    %edx,0xc(%esp)
-  800615:	89 74 24 08          	mov    %esi,0x8(%esp)
-  800619:	89 44 24 04          	mov    %eax,0x4(%esp)
-  80061d:	c7 04 24 80 1c 80 00 	movl   $0x801c80,(%esp)
-  800624:	e8 c1 00 00 00       	call   8006ea <cprintf>
+  800600:	8b 35 00 30 80 00    	mov    0x803000,%esi
+  800606:	e8 ea 0f 00 00       	call   8015f5 <sys_getenvid>
+  80060b:	8b 55 0c             	mov    0xc(%ebp),%edx
+  80060e:	89 54 24 10          	mov    %edx,0x10(%esp)
+  800612:	8b 55 08             	mov    0x8(%ebp),%edx
+  800615:	89 54 24 0c          	mov    %edx,0xc(%esp)
+  800619:	89 74 24 08          	mov    %esi,0x8(%esp)
+  80061d:	89 44 24 04          	mov    %eax,0x4(%esp)
+  800621:	c7 04 24 80 1c 80 00 	movl   $0x801c80,(%esp)
+  800628:	e8 c1 00 00 00       	call   8006ee <cprintf>
 		sys_getenvid(), binaryname, file, line);
 	vcprintf(fmt, ap);
-  800629:	89 5c 24 04          	mov    %ebx,0x4(%esp)
-  80062d:	8b 45 10             	mov    0x10(%ebp),%eax
-  800630:	89 04 24             	mov    %eax,(%esp)
-  800633:	e8 51 00 00 00       	call   800689 <vcprintf>
+  80062d:	89 5c 24 04          	mov    %ebx,0x4(%esp)
+  800631:	8b 45 10             	mov    0x10(%ebp),%eax
+  800634:	89 04 24             	mov    %eax,(%esp)
+  800637:	e8 51 00 00 00       	call   80068d <vcprintf>
 	cprintf("\n");
-  800638:	c7 04 24 90 1b 80 00 	movl   $0x801b90,(%esp)
-  80063f:	e8 a6 00 00 00       	call   8006ea <cprintf>
+  80063c:	c7 04 24 90 1b 80 00 	movl   $0x801b90,(%esp)
+  800643:	e8 a6 00 00 00       	call   8006ee <cprintf>
 
 	// Cause a breakpoint exception
 	while (1)
 		asm volatile("int3");
-  800644:	cc                   	int3   
-  800645:	eb fd                	jmp    800644 <_panic+0x53>
+  800648:	cc                   	int3   
+  800649:	eb fd                	jmp    800648 <_panic+0x53>
 
-00800647 <putch>:
+0080064b <putch>:
 };
 
 
 static void
 putch(int ch, struct printbuf *b)
 {
-  800647:	55                   	push   %ebp
-  800648:	89 e5                	mov    %esp,%ebp
-  80064a:	53                   	push   %ebx
-  80064b:	83 ec 14             	sub    $0x14,%esp
-  80064e:	8b 5d 0c             	mov    0xc(%ebp),%ebx
+  80064b:	55                   	push   %ebp
+  80064c:	89 e5                	mov    %esp,%ebp
+  80064e:	53                   	push   %ebx
+  80064f:	83 ec 14             	sub    $0x14,%esp
+  800652:	8b 5d 0c             	mov    0xc(%ebp),%ebx
 	b->buf[b->idx++] = ch;
-  800651:	8b 13                	mov    (%ebx),%edx
-  800653:	8d 42 01             	lea    0x1(%edx),%eax
-  800656:	89 03                	mov    %eax,(%ebx)
-  800658:	8b 4d 08             	mov    0x8(%ebp),%ecx
-  80065b:	88 4c 13 08          	mov    %cl,0x8(%ebx,%edx,1)
+  800655:	8b 13                	mov    (%ebx),%edx
+  800657:	8d 42 01             	lea    0x1(%edx),%eax
+  80065a:	89 03                	mov    %eax,(%ebx)
+  80065c:	8b 4d 08             	mov    0x8(%ebp),%ecx
+  80065f:	88 4c 13 08          	mov    %cl,0x8(%ebx,%edx,1)
 	if (b->idx == 256-1) {
-  80065f:	3d ff 00 00 00       	cmp    $0xff,%eax
-  800664:	75 19                	jne    80067f <putch+0x38>
+  800663:	3d ff 00 00 00       	cmp    $0xff,%eax
+  800668:	75 19                	jne    800683 <putch+0x38>
 		sys_cputs(b->buf, b->idx);
-  800666:	c7 44 24 04 ff 00 00 	movl   $0xff,0x4(%esp)
-  80066d:	00 
-  80066e:	8d 43 08             	lea    0x8(%ebx),%eax
-  800671:	89 04 24             	mov    %eax,(%esp)
-  800674:	e8 ed 0e 00 00       	call   801566 <sys_cputs>
+  80066a:	c7 44 24 04 ff 00 00 	movl   $0xff,0x4(%esp)
+  800671:	00 
+  800672:	8d 43 08             	lea    0x8(%ebx),%eax
+  800675:	89 04 24             	mov    %eax,(%esp)
+  800678:	e8 e9 0e 00 00       	call   801566 <sys_cputs>
 		b->idx = 0;
-  800679:	c7 03 00 00 00 00    	movl   $0x0,(%ebx)
+  80067d:	c7 03 00 00 00 00    	movl   $0x0,(%ebx)
 	}
 	b->cnt++;
-  80067f:	83 43 04 01          	addl   $0x1,0x4(%ebx)
+  800683:	83 43 04 01          	addl   $0x1,0x4(%ebx)
 }
-  800683:	83 c4 14             	add    $0x14,%esp
-  800686:	5b                   	pop    %ebx
-  800687:	5d                   	pop    %ebp
-  800688:	c3                   	ret    
+  800687:	83 c4 14             	add    $0x14,%esp
+  80068a:	5b                   	pop    %ebx
+  80068b:	5d                   	pop    %ebp
+  80068c:	c3                   	ret    
 
-00800689 <vcprintf>:
+0080068d <vcprintf>:
 
 int
 vcprintf(const char *fmt, va_list ap)
 {
-  800689:	55                   	push   %ebp
-  80068a:	89 e5                	mov    %esp,%ebp
-  80068c:	81 ec 28 01 00 00    	sub    $0x128,%esp
+  80068d:	55                   	push   %ebp
+  80068e:	89 e5                	mov    %esp,%ebp
+  800690:	81 ec 28 01 00 00    	sub    $0x128,%esp
 	struct printbuf b;
 
 	b.idx = 0;
-  800692:	c7 85 f0 fe ff ff 00 	movl   $0x0,-0x110(%ebp)
-  800699:	00 00 00 
+  800696:	c7 85 f0 fe ff ff 00 	movl   $0x0,-0x110(%ebp)
+  80069d:	00 00 00 
 	b.cnt = 0;
-  80069c:	c7 85 f4 fe ff ff 00 	movl   $0x0,-0x10c(%ebp)
-  8006a3:	00 00 00 
+  8006a0:	c7 85 f4 fe ff ff 00 	movl   $0x0,-0x10c(%ebp)
+  8006a7:	00 00 00 
 	vprintfmt((void*)putch, &b, fmt, ap);
-  8006a6:	8b 45 0c             	mov    0xc(%ebp),%eax
-  8006a9:	89 44 24 0c          	mov    %eax,0xc(%esp)
-  8006ad:	8b 45 08             	mov    0x8(%ebp),%eax
-  8006b0:	89 44 24 08          	mov    %eax,0x8(%esp)
-  8006b4:	8d 85 f0 fe ff ff    	lea    -0x110(%ebp),%eax
-  8006ba:	89 44 24 04          	mov    %eax,0x4(%esp)
-  8006be:	c7 04 24 47 06 80 00 	movl   $0x800647,(%esp)
-  8006c5:	e8 b5 02 00 00       	call   80097f <vprintfmt>
+  8006aa:	8b 45 0c             	mov    0xc(%ebp),%eax
+  8006ad:	89 44 24 0c          	mov    %eax,0xc(%esp)
+  8006b1:	8b 45 08             	mov    0x8(%ebp),%eax
+  8006b4:	89 44 24 08          	mov    %eax,0x8(%esp)
+  8006b8:	8d 85 f0 fe ff ff    	lea    -0x110(%ebp),%eax
+  8006be:	89 44 24 04          	mov    %eax,0x4(%esp)
+  8006c2:	c7 04 24 4b 06 80 00 	movl   $0x80064b,(%esp)
+  8006c9:	e8 b1 02 00 00       	call   80097f <vprintfmt>
 	sys_cputs(b.buf, b.idx);
-  8006ca:	8b 85 f0 fe ff ff    	mov    -0x110(%ebp),%eax
-  8006d0:	89 44 24 04          	mov    %eax,0x4(%esp)
-  8006d4:	8d 85 f8 fe ff ff    	lea    -0x108(%ebp),%eax
-  8006da:	89 04 24             	mov    %eax,(%esp)
-  8006dd:	e8 84 0e 00 00       	call   801566 <sys_cputs>
+  8006ce:	8b 85 f0 fe ff ff    	mov    -0x110(%ebp),%eax
+  8006d4:	89 44 24 04          	mov    %eax,0x4(%esp)
+  8006d8:	8d 85 f8 fe ff ff    	lea    -0x108(%ebp),%eax
+  8006de:	89 04 24             	mov    %eax,(%esp)
+  8006e1:	e8 80 0e 00 00       	call   801566 <sys_cputs>
 
 	return b.cnt;
 }
-  8006e2:	8b 85 f4 fe ff ff    	mov    -0x10c(%ebp),%eax
-  8006e8:	c9                   	leave  
-  8006e9:	c3                   	ret    
+  8006e6:	8b 85 f4 fe ff ff    	mov    -0x10c(%ebp),%eax
+  8006ec:	c9                   	leave  
+  8006ed:	c3                   	ret    
 
-008006ea <cprintf>:
+008006ee <cprintf>:
 
 int
 cprintf(const char *fmt, ...)
 {
-  8006ea:	55                   	push   %ebp
-  8006eb:	89 e5                	mov    %esp,%ebp
-  8006ed:	83 ec 18             	sub    $0x18,%esp
+  8006ee:	55                   	push   %ebp
+  8006ef:	89 e5                	mov    %esp,%ebp
+  8006f1:	83 ec 18             	sub    $0x18,%esp
 	va_list ap;
 	int cnt;
 
 	va_start(ap, fmt);
-  8006f0:	8d 45 0c             	lea    0xc(%ebp),%eax
+  8006f4:	8d 45 0c             	lea    0xc(%ebp),%eax
 	cnt = vcprintf(fmt, ap);
-  8006f3:	89 44 24 04          	mov    %eax,0x4(%esp)
-  8006f7:	8b 45 08             	mov    0x8(%ebp),%eax
-  8006fa:	89 04 24             	mov    %eax,(%esp)
-  8006fd:	e8 87 ff ff ff       	call   800689 <vcprintf>
+  8006f7:	89 44 24 04          	mov    %eax,0x4(%esp)
+  8006fb:	8b 45 08             	mov    0x8(%ebp),%eax
+  8006fe:	89 04 24             	mov    %eax,(%esp)
+  800701:	e8 87 ff ff ff       	call   80068d <vcprintf>
 	va_end(ap);
 
 	return cnt;
 }
-  800702:	c9                   	leave  
-  800703:	c3                   	ret    
-  800704:	66 90                	xchg   %ax,%ax
-  800706:	66 90                	xchg   %ax,%ax
+  800706:	c9                   	leave  
+  800707:	c3                   	ret    
   800708:	66 90                	xchg   %ax,%ax
   80070a:	66 90                	xchg   %ax,%ax
   80070c:	66 90                	xchg   %ax,%ax
@@ -3246,7 +3245,7 @@ sys_env_destroy(envid_t envid)
   8015d9:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
   8015e0:	00 
   8015e1:	c7 04 24 65 20 80 00 	movl   $0x802065,(%esp)
-  8015e8:	e8 04 f0 ff ff       	call   8005f1 <_panic>
+  8015e8:	e8 08 f0 ff ff       	call   8005f5 <_panic>
 
 int
 sys_env_destroy(envid_t envid)
@@ -3371,7 +3370,7 @@ sys_page_alloc(envid_t envid, void *va, int perm)
   80166b:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
   801672:	00 
   801673:	c7 04 24 65 20 80 00 	movl   $0x802065,(%esp)
-  80167a:	e8 72 ef ff ff       	call   8005f1 <_panic>
+  80167a:	e8 76 ef ff ff       	call   8005f5 <_panic>
 
 int
 sys_page_alloc(envid_t envid, void *va, int perm)
@@ -3426,7 +3425,7 @@ sys_page_map(envid_t srcenv, void *srcva, envid_t dstenv, void *dstva, int perm)
   8016be:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
   8016c5:	00 
   8016c6:	c7 04 24 65 20 80 00 	movl   $0x802065,(%esp)
-  8016cd:	e8 1f ef ff ff       	call   8005f1 <_panic>
+  8016cd:	e8 23 ef ff ff       	call   8005f5 <_panic>
 
 int
 sys_page_map(envid_t srcenv, void *srcva, envid_t dstenv, void *dstva, int perm)
@@ -3481,7 +3480,7 @@ sys_page_unmap(envid_t envid, void *va)
   801711:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
   801718:	00 
   801719:	c7 04 24 65 20 80 00 	movl   $0x802065,(%esp)
-  801720:	e8 cc ee ff ff       	call   8005f1 <_panic>
+  801720:	e8 d0 ee ff ff       	call   8005f5 <_panic>
 
 int
 sys_page_unmap(envid_t envid, void *va)
@@ -3538,7 +3537,7 @@ sys_env_set_status(envid_t envid, int status)
   801764:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
   80176b:	00 
   80176c:	c7 04 24 65 20 80 00 	movl   $0x802065,(%esp)
-  801773:	e8 79 ee ff ff       	call   8005f1 <_panic>
+  801773:	e8 7d ee ff ff       	call   8005f5 <_panic>
 
 int
 sys_env_set_status(envid_t envid, int status)
@@ -3593,7 +3592,7 @@ sys_env_set_pgfault_upcall(envid_t envid, void *upcall)
   8017b7:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
   8017be:	00 
   8017bf:	c7 04 24 65 20 80 00 	movl   $0x802065,(%esp)
-  8017c6:	e8 26 ee ff ff       	call   8005f1 <_panic>
+  8017c6:	e8 2a ee ff ff       	call   8005f5 <_panic>
 
 int
 sys_env_set_pgfault_upcall(envid_t envid, void *upcall)
@@ -3683,7 +3682,7 @@ sys_ipc_recv(void *dstva)
   80182c:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
   801833:	00 
   801834:	c7 04 24 65 20 80 00 	movl   $0x802065,(%esp)
-  80183b:	e8 b1 ed ff ff       	call   8005f1 <_panic>
+  80183b:	e8 b5 ed ff ff       	call   8005f5 <_panic>
 
 int
 sys_ipc_recv(void *dstva)

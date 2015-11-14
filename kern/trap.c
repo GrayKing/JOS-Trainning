@@ -418,7 +418,8 @@ page_fault_handler(struct Trapframe *tf)
 	// stack is free.  In the recursive case, this means we have to leave
 	// an extra word between the current top of the exception stack and
 	// the new stack frame because the exception stack _is_ the trap-time
-	// stack.//
+	// stack.
+	//
 	// If there's no page fault upcall, the environment didn't allocate a
 	// page for its exception stack or can't write to it, or the exception
 	// stack overflows, then destroy the environment that caused the fault.
@@ -436,8 +437,6 @@ page_fault_handler(struct Trapframe *tf)
 		//cprintf(" page_fault_handler : now esp point to %08x\n",tf->tf_esp); 
 		//cprintf(" page_fault_handler : now eip point to %08x\n",tf->tf_eip); 
 		char * stack_ptr ;
-		cprintf("envid =[ %08x ] , cur_eip = %08x\n",
-			curenv->env_id , tf->tf_eip ) ; 	
 		if ( ! ( ( tf->tf_esp < UXSTACKTOP ) && ( tf->tf_esp >= UXSTACKTOP - PGSIZE ) ) ) {
 			stack_ptr = ( char * )  UXSTACKTOP ; 
 			struct UTrapframe * utf_ptr = ( struct UTrapframe * ) ( stack_ptr - sizeof( struct UTrapframe ) ) ;  

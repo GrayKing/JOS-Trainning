@@ -46,7 +46,7 @@ umain(int argc, char **argv)
   800040:	00 
   800041:	a1 00 20 80 00       	mov    0x802000,%eax
   800046:	89 04 24             	mov    %eax,(%esp)
-  800049:	e8 5e 00 00 00       	call   8000ac <sys_cputs>
+  800049:	e8 62 00 00 00       	call   8000b0 <sys_cputs>
 }
   80004e:	c9                   	leave  
   80004f:	c3                   	ret    
@@ -68,764 +68,763 @@ libmain(int argc, char **argv)
 	// set thisenv to point at our Env structure in envs[].
 	// LAB 3: Your code here.
 	thisenv = ( ( struct Env * ) envs ) + ENVX(sys_getenvid());
-  80005e:	e8 d8 00 00 00       	call   80013b <sys_getenvid>
+  80005e:	e8 dc 00 00 00       	call   80013f <sys_getenvid>
   800063:	25 ff 03 00 00       	and    $0x3ff,%eax
-  800068:	6b c0 7c             	imul   $0x7c,%eax,%eax
-  80006b:	05 00 00 c0 ee       	add    $0xeec00000,%eax
-  800070:	a3 08 20 80 00       	mov    %eax,0x802008
+  800068:	89 c2                	mov    %eax,%edx
+  80006a:	c1 e2 07             	shl    $0x7,%edx
+  80006d:	8d 84 c2 00 00 c0 ee 	lea    -0x11400000(%edx,%eax,8),%eax
+  800074:	a3 08 20 80 00       	mov    %eax,0x802008
 
 	// save the name of the program so that panic() can use it
 	if (argc > 0)
-  800075:	85 db                	test   %ebx,%ebx
-  800077:	7e 07                	jle    800080 <libmain+0x30>
+  800079:	85 db                	test   %ebx,%ebx
+  80007b:	7e 07                	jle    800084 <libmain+0x34>
 		binaryname = argv[0];
-  800079:	8b 06                	mov    (%esi),%eax
-  80007b:	a3 04 20 80 00       	mov    %eax,0x802004
+  80007d:	8b 06                	mov    (%esi),%eax
+  80007f:	a3 04 20 80 00       	mov    %eax,0x802004
 
 	// call user main routine
 	umain(argc, argv);
-  800080:	89 74 24 04          	mov    %esi,0x4(%esp)
-  800084:	89 1c 24             	mov    %ebx,(%esp)
-  800087:	e8 a7 ff ff ff       	call   800033 <umain>
+  800084:	89 74 24 04          	mov    %esi,0x4(%esp)
+  800088:	89 1c 24             	mov    %ebx,(%esp)
+  80008b:	e8 a3 ff ff ff       	call   800033 <umain>
 
 	// exit gracefully
 	exit();
-  80008c:	e8 07 00 00 00       	call   800098 <exit>
+  800090:	e8 07 00 00 00       	call   80009c <exit>
 }
-  800091:	83 c4 10             	add    $0x10,%esp
-  800094:	5b                   	pop    %ebx
-  800095:	5e                   	pop    %esi
-  800096:	5d                   	pop    %ebp
-  800097:	c3                   	ret    
+  800095:	83 c4 10             	add    $0x10,%esp
+  800098:	5b                   	pop    %ebx
+  800099:	5e                   	pop    %esi
+  80009a:	5d                   	pop    %ebp
+  80009b:	c3                   	ret    
 
-00800098 <exit>:
+0080009c <exit>:
 
 #include <inc/lib.h>
 
 void
 exit(void)
 {
-  800098:	55                   	push   %ebp
-  800099:	89 e5                	mov    %esp,%ebp
-  80009b:	83 ec 18             	sub    $0x18,%esp
+  80009c:	55                   	push   %ebp
+  80009d:	89 e5                	mov    %esp,%ebp
+  80009f:	83 ec 18             	sub    $0x18,%esp
 	sys_env_destroy(0);
-  80009e:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
-  8000a5:	e8 3f 00 00 00       	call   8000e9 <sys_env_destroy>
+  8000a2:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  8000a9:	e8 3f 00 00 00       	call   8000ed <sys_env_destroy>
 }
-  8000aa:	c9                   	leave  
-  8000ab:	c3                   	ret    
+  8000ae:	c9                   	leave  
+  8000af:	c3                   	ret    
 
-008000ac <sys_cputs>:
+008000b0 <sys_cputs>:
 	return ret;
 }
 
 void
 sys_cputs(const char *s, size_t len)
 {
-  8000ac:	55                   	push   %ebp
-  8000ad:	89 e5                	mov    %esp,%ebp
-  8000af:	57                   	push   %edi
-  8000b0:	56                   	push   %esi
-  8000b1:	53                   	push   %ebx
+  8000b0:	55                   	push   %ebp
+  8000b1:	89 e5                	mov    %esp,%ebp
+  8000b3:	57                   	push   %edi
+  8000b4:	56                   	push   %esi
+  8000b5:	53                   	push   %ebx
 	//
 	// The last clause tells the assembler that this can
 	// potentially change the condition codes and arbitrary
 	// memory locations.
 
 	asm volatile("int %1\n"
-  8000b2:	b8 00 00 00 00       	mov    $0x0,%eax
-  8000b7:	8b 4d 0c             	mov    0xc(%ebp),%ecx
-  8000ba:	8b 55 08             	mov    0x8(%ebp),%edx
-  8000bd:	89 c3                	mov    %eax,%ebx
-  8000bf:	89 c7                	mov    %eax,%edi
-  8000c1:	89 c6                	mov    %eax,%esi
-  8000c3:	cd 30                	int    $0x30
+  8000b6:	b8 00 00 00 00       	mov    $0x0,%eax
+  8000bb:	8b 4d 0c             	mov    0xc(%ebp),%ecx
+  8000be:	8b 55 08             	mov    0x8(%ebp),%edx
+  8000c1:	89 c3                	mov    %eax,%ebx
+  8000c3:	89 c7                	mov    %eax,%edi
+  8000c5:	89 c6                	mov    %eax,%esi
+  8000c7:	cd 30                	int    $0x30
 
 void
 sys_cputs(const char *s, size_t len)
 {
 	syscall(SYS_cputs, 0, (uint32_t)s, len, 0, 0, 0);
 }
-  8000c5:	5b                   	pop    %ebx
-  8000c6:	5e                   	pop    %esi
-  8000c7:	5f                   	pop    %edi
-  8000c8:	5d                   	pop    %ebp
-  8000c9:	c3                   	ret    
+  8000c9:	5b                   	pop    %ebx
+  8000ca:	5e                   	pop    %esi
+  8000cb:	5f                   	pop    %edi
+  8000cc:	5d                   	pop    %ebp
+  8000cd:	c3                   	ret    
 
-008000ca <sys_cgetc>:
+008000ce <sys_cgetc>:
 
 int
 sys_cgetc(void)
 {
-  8000ca:	55                   	push   %ebp
-  8000cb:	89 e5                	mov    %esp,%ebp
-  8000cd:	57                   	push   %edi
-  8000ce:	56                   	push   %esi
-  8000cf:	53                   	push   %ebx
+  8000ce:	55                   	push   %ebp
+  8000cf:	89 e5                	mov    %esp,%ebp
+  8000d1:	57                   	push   %edi
+  8000d2:	56                   	push   %esi
+  8000d3:	53                   	push   %ebx
 	//
 	// The last clause tells the assembler that this can
 	// potentially change the condition codes and arbitrary
 	// memory locations.
 
 	asm volatile("int %1\n"
-  8000d0:	ba 00 00 00 00       	mov    $0x0,%edx
-  8000d5:	b8 01 00 00 00       	mov    $0x1,%eax
-  8000da:	89 d1                	mov    %edx,%ecx
-  8000dc:	89 d3                	mov    %edx,%ebx
-  8000de:	89 d7                	mov    %edx,%edi
-  8000e0:	89 d6                	mov    %edx,%esi
-  8000e2:	cd 30                	int    $0x30
+  8000d4:	ba 00 00 00 00       	mov    $0x0,%edx
+  8000d9:	b8 01 00 00 00       	mov    $0x1,%eax
+  8000de:	89 d1                	mov    %edx,%ecx
+  8000e0:	89 d3                	mov    %edx,%ebx
+  8000e2:	89 d7                	mov    %edx,%edi
+  8000e4:	89 d6                	mov    %edx,%esi
+  8000e6:	cd 30                	int    $0x30
 
 int
 sys_cgetc(void)
 {
 	return syscall(SYS_cgetc, 0, 0, 0, 0, 0, 0);
 }
-  8000e4:	5b                   	pop    %ebx
-  8000e5:	5e                   	pop    %esi
-  8000e6:	5f                   	pop    %edi
-  8000e7:	5d                   	pop    %ebp
-  8000e8:	c3                   	ret    
+  8000e8:	5b                   	pop    %ebx
+  8000e9:	5e                   	pop    %esi
+  8000ea:	5f                   	pop    %edi
+  8000eb:	5d                   	pop    %ebp
+  8000ec:	c3                   	ret    
 
-008000e9 <sys_env_destroy>:
+008000ed <sys_env_destroy>:
 
 int
 sys_env_destroy(envid_t envid)
 {
-  8000e9:	55                   	push   %ebp
-  8000ea:	89 e5                	mov    %esp,%ebp
-  8000ec:	57                   	push   %edi
-  8000ed:	56                   	push   %esi
-  8000ee:	53                   	push   %ebx
-  8000ef:	83 ec 2c             	sub    $0x2c,%esp
+  8000ed:	55                   	push   %ebp
+  8000ee:	89 e5                	mov    %esp,%ebp
+  8000f0:	57                   	push   %edi
+  8000f1:	56                   	push   %esi
+  8000f2:	53                   	push   %ebx
+  8000f3:	83 ec 2c             	sub    $0x2c,%esp
 	//
 	// The last clause tells the assembler that this can
 	// potentially change the condition codes and arbitrary
 	// memory locations.
 
 	asm volatile("int %1\n"
-  8000f2:	b9 00 00 00 00       	mov    $0x0,%ecx
-  8000f7:	b8 03 00 00 00       	mov    $0x3,%eax
-  8000fc:	8b 55 08             	mov    0x8(%ebp),%edx
-  8000ff:	89 cb                	mov    %ecx,%ebx
-  800101:	89 cf                	mov    %ecx,%edi
-  800103:	89 ce                	mov    %ecx,%esi
-  800105:	cd 30                	int    $0x30
+  8000f6:	b9 00 00 00 00       	mov    $0x0,%ecx
+  8000fb:	b8 03 00 00 00       	mov    $0x3,%eax
+  800100:	8b 55 08             	mov    0x8(%ebp),%edx
+  800103:	89 cb                	mov    %ecx,%ebx
+  800105:	89 cf                	mov    %ecx,%edi
+  800107:	89 ce                	mov    %ecx,%esi
+  800109:	cd 30                	int    $0x30
 		  "b" (a3),
 		  "D" (a4),
 		  "S" (a5)
 		: "cc", "memory");
 
 	if(check && ret > 0)
-  800107:	85 c0                	test   %eax,%eax
-  800109:	7e 28                	jle    800133 <sys_env_destroy+0x4a>
+  80010b:	85 c0                	test   %eax,%eax
+  80010d:	7e 28                	jle    800137 <sys_env_destroy+0x4a>
 		panic("syscall %d returned %d (> 0)", num, ret);
-  80010b:	89 44 24 10          	mov    %eax,0x10(%esp)
-  80010f:	c7 44 24 0c 03 00 00 	movl   $0x3,0xc(%esp)
-  800116:	00 
-  800117:	c7 44 24 08 b8 15 80 	movl   $0x8015b8,0x8(%esp)
-  80011e:	00 
-  80011f:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
-  800126:	00 
-  800127:	c7 04 24 d5 15 80 00 	movl   $0x8015d5,(%esp)
-  80012e:	e8 5b 02 00 00       	call   80038e <_panic>
+  80010f:	89 44 24 10          	mov    %eax,0x10(%esp)
+  800113:	c7 44 24 0c 03 00 00 	movl   $0x3,0xc(%esp)
+  80011a:	00 
+  80011b:	c7 44 24 08 b8 15 80 	movl   $0x8015b8,0x8(%esp)
+  800122:	00 
+  800123:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
+  80012a:	00 
+  80012b:	c7 04 24 d5 15 80 00 	movl   $0x8015d5,(%esp)
+  800132:	e8 5b 02 00 00       	call   800392 <_panic>
 
 int
 sys_env_destroy(envid_t envid)
 {
 	return syscall(SYS_env_destroy, 1, envid, 0, 0, 0, 0);
 }
-  800133:	83 c4 2c             	add    $0x2c,%esp
-  800136:	5b                   	pop    %ebx
-  800137:	5e                   	pop    %esi
-  800138:	5f                   	pop    %edi
-  800139:	5d                   	pop    %ebp
-  80013a:	c3                   	ret    
+  800137:	83 c4 2c             	add    $0x2c,%esp
+  80013a:	5b                   	pop    %ebx
+  80013b:	5e                   	pop    %esi
+  80013c:	5f                   	pop    %edi
+  80013d:	5d                   	pop    %ebp
+  80013e:	c3                   	ret    
 
-0080013b <sys_getenvid>:
+0080013f <sys_getenvid>:
 
 envid_t
 sys_getenvid(void)
 {
-  80013b:	55                   	push   %ebp
-  80013c:	89 e5                	mov    %esp,%ebp
-  80013e:	57                   	push   %edi
-  80013f:	56                   	push   %esi
-  800140:	53                   	push   %ebx
+  80013f:	55                   	push   %ebp
+  800140:	89 e5                	mov    %esp,%ebp
+  800142:	57                   	push   %edi
+  800143:	56                   	push   %esi
+  800144:	53                   	push   %ebx
 	//
 	// The last clause tells the assembler that this can
 	// potentially change the condition codes and arbitrary
 	// memory locations.
 
 	asm volatile("int %1\n"
-  800141:	ba 00 00 00 00       	mov    $0x0,%edx
-  800146:	b8 02 00 00 00       	mov    $0x2,%eax
-  80014b:	89 d1                	mov    %edx,%ecx
-  80014d:	89 d3                	mov    %edx,%ebx
-  80014f:	89 d7                	mov    %edx,%edi
-  800151:	89 d6                	mov    %edx,%esi
-  800153:	cd 30                	int    $0x30
+  800145:	ba 00 00 00 00       	mov    $0x0,%edx
+  80014a:	b8 02 00 00 00       	mov    $0x2,%eax
+  80014f:	89 d1                	mov    %edx,%ecx
+  800151:	89 d3                	mov    %edx,%ebx
+  800153:	89 d7                	mov    %edx,%edi
+  800155:	89 d6                	mov    %edx,%esi
+  800157:	cd 30                	int    $0x30
 
 envid_t
 sys_getenvid(void)
 {
 	 return syscall(SYS_getenvid, 0, 0, 0, 0, 0, 0);
 }
-  800155:	5b                   	pop    %ebx
-  800156:	5e                   	pop    %esi
-  800157:	5f                   	pop    %edi
-  800158:	5d                   	pop    %ebp
-  800159:	c3                   	ret    
+  800159:	5b                   	pop    %ebx
+  80015a:	5e                   	pop    %esi
+  80015b:	5f                   	pop    %edi
+  80015c:	5d                   	pop    %ebp
+  80015d:	c3                   	ret    
 
-0080015a <sys_yield>:
+0080015e <sys_yield>:
 
 void
 sys_yield(void)
 {
-  80015a:	55                   	push   %ebp
-  80015b:	89 e5                	mov    %esp,%ebp
-  80015d:	57                   	push   %edi
-  80015e:	56                   	push   %esi
-  80015f:	53                   	push   %ebx
+  80015e:	55                   	push   %ebp
+  80015f:	89 e5                	mov    %esp,%ebp
+  800161:	57                   	push   %edi
+  800162:	56                   	push   %esi
+  800163:	53                   	push   %ebx
 	//
 	// The last clause tells the assembler that this can
 	// potentially change the condition codes and arbitrary
 	// memory locations.
 
 	asm volatile("int %1\n"
-  800160:	ba 00 00 00 00       	mov    $0x0,%edx
-  800165:	b8 0a 00 00 00       	mov    $0xa,%eax
-  80016a:	89 d1                	mov    %edx,%ecx
-  80016c:	89 d3                	mov    %edx,%ebx
-  80016e:	89 d7                	mov    %edx,%edi
-  800170:	89 d6                	mov    %edx,%esi
-  800172:	cd 30                	int    $0x30
+  800164:	ba 00 00 00 00       	mov    $0x0,%edx
+  800169:	b8 0a 00 00 00       	mov    $0xa,%eax
+  80016e:	89 d1                	mov    %edx,%ecx
+  800170:	89 d3                	mov    %edx,%ebx
+  800172:	89 d7                	mov    %edx,%edi
+  800174:	89 d6                	mov    %edx,%esi
+  800176:	cd 30                	int    $0x30
 
 void
 sys_yield(void)
 {
 	syscall(SYS_yield, 0, 0, 0, 0, 0, 0);
 }
-  800174:	5b                   	pop    %ebx
-  800175:	5e                   	pop    %esi
-  800176:	5f                   	pop    %edi
-  800177:	5d                   	pop    %ebp
-  800178:	c3                   	ret    
+  800178:	5b                   	pop    %ebx
+  800179:	5e                   	pop    %esi
+  80017a:	5f                   	pop    %edi
+  80017b:	5d                   	pop    %ebp
+  80017c:	c3                   	ret    
 
-00800179 <sys_page_alloc>:
+0080017d <sys_page_alloc>:
 
 int
 sys_page_alloc(envid_t envid, void *va, int perm)
 {
-  800179:	55                   	push   %ebp
-  80017a:	89 e5                	mov    %esp,%ebp
-  80017c:	57                   	push   %edi
-  80017d:	56                   	push   %esi
-  80017e:	53                   	push   %ebx
-  80017f:	83 ec 2c             	sub    $0x2c,%esp
+  80017d:	55                   	push   %ebp
+  80017e:	89 e5                	mov    %esp,%ebp
+  800180:	57                   	push   %edi
+  800181:	56                   	push   %esi
+  800182:	53                   	push   %ebx
+  800183:	83 ec 2c             	sub    $0x2c,%esp
 	//
 	// The last clause tells the assembler that this can
 	// potentially change the condition codes and arbitrary
 	// memory locations.
 
 	asm volatile("int %1\n"
-  800182:	be 00 00 00 00       	mov    $0x0,%esi
-  800187:	b8 04 00 00 00       	mov    $0x4,%eax
-  80018c:	8b 4d 0c             	mov    0xc(%ebp),%ecx
-  80018f:	8b 55 08             	mov    0x8(%ebp),%edx
-  800192:	8b 5d 10             	mov    0x10(%ebp),%ebx
-  800195:	89 f7                	mov    %esi,%edi
-  800197:	cd 30                	int    $0x30
+  800186:	be 00 00 00 00       	mov    $0x0,%esi
+  80018b:	b8 04 00 00 00       	mov    $0x4,%eax
+  800190:	8b 4d 0c             	mov    0xc(%ebp),%ecx
+  800193:	8b 55 08             	mov    0x8(%ebp),%edx
+  800196:	8b 5d 10             	mov    0x10(%ebp),%ebx
+  800199:	89 f7                	mov    %esi,%edi
+  80019b:	cd 30                	int    $0x30
 		  "b" (a3),
 		  "D" (a4),
 		  "S" (a5)
 		: "cc", "memory");
 
 	if(check && ret > 0)
-  800199:	85 c0                	test   %eax,%eax
-  80019b:	7e 28                	jle    8001c5 <sys_page_alloc+0x4c>
+  80019d:	85 c0                	test   %eax,%eax
+  80019f:	7e 28                	jle    8001c9 <sys_page_alloc+0x4c>
 		panic("syscall %d returned %d (> 0)", num, ret);
-  80019d:	89 44 24 10          	mov    %eax,0x10(%esp)
-  8001a1:	c7 44 24 0c 04 00 00 	movl   $0x4,0xc(%esp)
-  8001a8:	00 
-  8001a9:	c7 44 24 08 b8 15 80 	movl   $0x8015b8,0x8(%esp)
-  8001b0:	00 
-  8001b1:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
-  8001b8:	00 
-  8001b9:	c7 04 24 d5 15 80 00 	movl   $0x8015d5,(%esp)
-  8001c0:	e8 c9 01 00 00       	call   80038e <_panic>
+  8001a1:	89 44 24 10          	mov    %eax,0x10(%esp)
+  8001a5:	c7 44 24 0c 04 00 00 	movl   $0x4,0xc(%esp)
+  8001ac:	00 
+  8001ad:	c7 44 24 08 b8 15 80 	movl   $0x8015b8,0x8(%esp)
+  8001b4:	00 
+  8001b5:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
+  8001bc:	00 
+  8001bd:	c7 04 24 d5 15 80 00 	movl   $0x8015d5,(%esp)
+  8001c4:	e8 c9 01 00 00       	call   800392 <_panic>
 
 int
 sys_page_alloc(envid_t envid, void *va, int perm)
 {
 	return syscall(SYS_page_alloc, 1, envid, (uint32_t) va, perm, 0, 0);
 }
-  8001c5:	83 c4 2c             	add    $0x2c,%esp
-  8001c8:	5b                   	pop    %ebx
-  8001c9:	5e                   	pop    %esi
-  8001ca:	5f                   	pop    %edi
-  8001cb:	5d                   	pop    %ebp
-  8001cc:	c3                   	ret    
+  8001c9:	83 c4 2c             	add    $0x2c,%esp
+  8001cc:	5b                   	pop    %ebx
+  8001cd:	5e                   	pop    %esi
+  8001ce:	5f                   	pop    %edi
+  8001cf:	5d                   	pop    %ebp
+  8001d0:	c3                   	ret    
 
-008001cd <sys_page_map>:
+008001d1 <sys_page_map>:
 
 int
 sys_page_map(envid_t srcenv, void *srcva, envid_t dstenv, void *dstva, int perm)
 {
-  8001cd:	55                   	push   %ebp
-  8001ce:	89 e5                	mov    %esp,%ebp
-  8001d0:	57                   	push   %edi
-  8001d1:	56                   	push   %esi
-  8001d2:	53                   	push   %ebx
-  8001d3:	83 ec 2c             	sub    $0x2c,%esp
+  8001d1:	55                   	push   %ebp
+  8001d2:	89 e5                	mov    %esp,%ebp
+  8001d4:	57                   	push   %edi
+  8001d5:	56                   	push   %esi
+  8001d6:	53                   	push   %ebx
+  8001d7:	83 ec 2c             	sub    $0x2c,%esp
 	//
 	// The last clause tells the assembler that this can
 	// potentially change the condition codes and arbitrary
 	// memory locations.
 
 	asm volatile("int %1\n"
-  8001d6:	b8 05 00 00 00       	mov    $0x5,%eax
-  8001db:	8b 4d 0c             	mov    0xc(%ebp),%ecx
-  8001de:	8b 55 08             	mov    0x8(%ebp),%edx
-  8001e1:	8b 5d 10             	mov    0x10(%ebp),%ebx
-  8001e4:	8b 7d 14             	mov    0x14(%ebp),%edi
-  8001e7:	8b 75 18             	mov    0x18(%ebp),%esi
-  8001ea:	cd 30                	int    $0x30
+  8001da:	b8 05 00 00 00       	mov    $0x5,%eax
+  8001df:	8b 4d 0c             	mov    0xc(%ebp),%ecx
+  8001e2:	8b 55 08             	mov    0x8(%ebp),%edx
+  8001e5:	8b 5d 10             	mov    0x10(%ebp),%ebx
+  8001e8:	8b 7d 14             	mov    0x14(%ebp),%edi
+  8001eb:	8b 75 18             	mov    0x18(%ebp),%esi
+  8001ee:	cd 30                	int    $0x30
 		  "b" (a3),
 		  "D" (a4),
 		  "S" (a5)
 		: "cc", "memory");
 
 	if(check && ret > 0)
-  8001ec:	85 c0                	test   %eax,%eax
-  8001ee:	7e 28                	jle    800218 <sys_page_map+0x4b>
+  8001f0:	85 c0                	test   %eax,%eax
+  8001f2:	7e 28                	jle    80021c <sys_page_map+0x4b>
 		panic("syscall %d returned %d (> 0)", num, ret);
-  8001f0:	89 44 24 10          	mov    %eax,0x10(%esp)
-  8001f4:	c7 44 24 0c 05 00 00 	movl   $0x5,0xc(%esp)
-  8001fb:	00 
-  8001fc:	c7 44 24 08 b8 15 80 	movl   $0x8015b8,0x8(%esp)
-  800203:	00 
-  800204:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
-  80020b:	00 
-  80020c:	c7 04 24 d5 15 80 00 	movl   $0x8015d5,(%esp)
-  800213:	e8 76 01 00 00       	call   80038e <_panic>
+  8001f4:	89 44 24 10          	mov    %eax,0x10(%esp)
+  8001f8:	c7 44 24 0c 05 00 00 	movl   $0x5,0xc(%esp)
+  8001ff:	00 
+  800200:	c7 44 24 08 b8 15 80 	movl   $0x8015b8,0x8(%esp)
+  800207:	00 
+  800208:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
+  80020f:	00 
+  800210:	c7 04 24 d5 15 80 00 	movl   $0x8015d5,(%esp)
+  800217:	e8 76 01 00 00       	call   800392 <_panic>
 
 int
 sys_page_map(envid_t srcenv, void *srcva, envid_t dstenv, void *dstva, int perm)
 {
 	return syscall(SYS_page_map, 1, srcenv, (uint32_t) srcva, dstenv, (uint32_t) dstva, perm);
 }
-  800218:	83 c4 2c             	add    $0x2c,%esp
-  80021b:	5b                   	pop    %ebx
-  80021c:	5e                   	pop    %esi
-  80021d:	5f                   	pop    %edi
-  80021e:	5d                   	pop    %ebp
-  80021f:	c3                   	ret    
+  80021c:	83 c4 2c             	add    $0x2c,%esp
+  80021f:	5b                   	pop    %ebx
+  800220:	5e                   	pop    %esi
+  800221:	5f                   	pop    %edi
+  800222:	5d                   	pop    %ebp
+  800223:	c3                   	ret    
 
-00800220 <sys_page_unmap>:
+00800224 <sys_page_unmap>:
 
 int
 sys_page_unmap(envid_t envid, void *va)
 {
-  800220:	55                   	push   %ebp
-  800221:	89 e5                	mov    %esp,%ebp
-  800223:	57                   	push   %edi
-  800224:	56                   	push   %esi
-  800225:	53                   	push   %ebx
-  800226:	83 ec 2c             	sub    $0x2c,%esp
+  800224:	55                   	push   %ebp
+  800225:	89 e5                	mov    %esp,%ebp
+  800227:	57                   	push   %edi
+  800228:	56                   	push   %esi
+  800229:	53                   	push   %ebx
+  80022a:	83 ec 2c             	sub    $0x2c,%esp
 	//
 	// The last clause tells the assembler that this can
 	// potentially change the condition codes and arbitrary
 	// memory locations.
 
 	asm volatile("int %1\n"
-  800229:	bb 00 00 00 00       	mov    $0x0,%ebx
-  80022e:	b8 06 00 00 00       	mov    $0x6,%eax
-  800233:	8b 4d 0c             	mov    0xc(%ebp),%ecx
-  800236:	8b 55 08             	mov    0x8(%ebp),%edx
-  800239:	89 df                	mov    %ebx,%edi
-  80023b:	89 de                	mov    %ebx,%esi
-  80023d:	cd 30                	int    $0x30
+  80022d:	bb 00 00 00 00       	mov    $0x0,%ebx
+  800232:	b8 06 00 00 00       	mov    $0x6,%eax
+  800237:	8b 4d 0c             	mov    0xc(%ebp),%ecx
+  80023a:	8b 55 08             	mov    0x8(%ebp),%edx
+  80023d:	89 df                	mov    %ebx,%edi
+  80023f:	89 de                	mov    %ebx,%esi
+  800241:	cd 30                	int    $0x30
 		  "b" (a3),
 		  "D" (a4),
 		  "S" (a5)
 		: "cc", "memory");
 
 	if(check && ret > 0)
-  80023f:	85 c0                	test   %eax,%eax
-  800241:	7e 28                	jle    80026b <sys_page_unmap+0x4b>
+  800243:	85 c0                	test   %eax,%eax
+  800245:	7e 28                	jle    80026f <sys_page_unmap+0x4b>
 		panic("syscall %d returned %d (> 0)", num, ret);
-  800243:	89 44 24 10          	mov    %eax,0x10(%esp)
-  800247:	c7 44 24 0c 06 00 00 	movl   $0x6,0xc(%esp)
-  80024e:	00 
-  80024f:	c7 44 24 08 b8 15 80 	movl   $0x8015b8,0x8(%esp)
-  800256:	00 
-  800257:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
-  80025e:	00 
-  80025f:	c7 04 24 d5 15 80 00 	movl   $0x8015d5,(%esp)
-  800266:	e8 23 01 00 00       	call   80038e <_panic>
+  800247:	89 44 24 10          	mov    %eax,0x10(%esp)
+  80024b:	c7 44 24 0c 06 00 00 	movl   $0x6,0xc(%esp)
+  800252:	00 
+  800253:	c7 44 24 08 b8 15 80 	movl   $0x8015b8,0x8(%esp)
+  80025a:	00 
+  80025b:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
+  800262:	00 
+  800263:	c7 04 24 d5 15 80 00 	movl   $0x8015d5,(%esp)
+  80026a:	e8 23 01 00 00       	call   800392 <_panic>
 
 int
 sys_page_unmap(envid_t envid, void *va)
 {
 	return syscall(SYS_page_unmap, 1, envid, (uint32_t) va, 0, 0, 0);
 }
-  80026b:	83 c4 2c             	add    $0x2c,%esp
-  80026e:	5b                   	pop    %ebx
-  80026f:	5e                   	pop    %esi
-  800270:	5f                   	pop    %edi
-  800271:	5d                   	pop    %ebp
-  800272:	c3                   	ret    
+  80026f:	83 c4 2c             	add    $0x2c,%esp
+  800272:	5b                   	pop    %ebx
+  800273:	5e                   	pop    %esi
+  800274:	5f                   	pop    %edi
+  800275:	5d                   	pop    %ebp
+  800276:	c3                   	ret    
 
-00800273 <sys_env_set_status>:
+00800277 <sys_env_set_status>:
 
 // sys_exofork is inlined in lib.h
 
 int
 sys_env_set_status(envid_t envid, int status)
 {
-  800273:	55                   	push   %ebp
-  800274:	89 e5                	mov    %esp,%ebp
-  800276:	57                   	push   %edi
-  800277:	56                   	push   %esi
-  800278:	53                   	push   %ebx
-  800279:	83 ec 2c             	sub    $0x2c,%esp
+  800277:	55                   	push   %ebp
+  800278:	89 e5                	mov    %esp,%ebp
+  80027a:	57                   	push   %edi
+  80027b:	56                   	push   %esi
+  80027c:	53                   	push   %ebx
+  80027d:	83 ec 2c             	sub    $0x2c,%esp
 	//
 	// The last clause tells the assembler that this can
 	// potentially change the condition codes and arbitrary
 	// memory locations.
 
 	asm volatile("int %1\n"
-  80027c:	bb 00 00 00 00       	mov    $0x0,%ebx
-  800281:	b8 08 00 00 00       	mov    $0x8,%eax
-  800286:	8b 4d 0c             	mov    0xc(%ebp),%ecx
-  800289:	8b 55 08             	mov    0x8(%ebp),%edx
-  80028c:	89 df                	mov    %ebx,%edi
-  80028e:	89 de                	mov    %ebx,%esi
-  800290:	cd 30                	int    $0x30
+  800280:	bb 00 00 00 00       	mov    $0x0,%ebx
+  800285:	b8 08 00 00 00       	mov    $0x8,%eax
+  80028a:	8b 4d 0c             	mov    0xc(%ebp),%ecx
+  80028d:	8b 55 08             	mov    0x8(%ebp),%edx
+  800290:	89 df                	mov    %ebx,%edi
+  800292:	89 de                	mov    %ebx,%esi
+  800294:	cd 30                	int    $0x30
 		  "b" (a3),
 		  "D" (a4),
 		  "S" (a5)
 		: "cc", "memory");
 
 	if(check && ret > 0)
-  800292:	85 c0                	test   %eax,%eax
-  800294:	7e 28                	jle    8002be <sys_env_set_status+0x4b>
+  800296:	85 c0                	test   %eax,%eax
+  800298:	7e 28                	jle    8002c2 <sys_env_set_status+0x4b>
 		panic("syscall %d returned %d (> 0)", num, ret);
-  800296:	89 44 24 10          	mov    %eax,0x10(%esp)
-  80029a:	c7 44 24 0c 08 00 00 	movl   $0x8,0xc(%esp)
-  8002a1:	00 
-  8002a2:	c7 44 24 08 b8 15 80 	movl   $0x8015b8,0x8(%esp)
-  8002a9:	00 
-  8002aa:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
-  8002b1:	00 
-  8002b2:	c7 04 24 d5 15 80 00 	movl   $0x8015d5,(%esp)
-  8002b9:	e8 d0 00 00 00       	call   80038e <_panic>
+  80029a:	89 44 24 10          	mov    %eax,0x10(%esp)
+  80029e:	c7 44 24 0c 08 00 00 	movl   $0x8,0xc(%esp)
+  8002a5:	00 
+  8002a6:	c7 44 24 08 b8 15 80 	movl   $0x8015b8,0x8(%esp)
+  8002ad:	00 
+  8002ae:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
+  8002b5:	00 
+  8002b6:	c7 04 24 d5 15 80 00 	movl   $0x8015d5,(%esp)
+  8002bd:	e8 d0 00 00 00       	call   800392 <_panic>
 
 int
 sys_env_set_status(envid_t envid, int status)
 {
 	return syscall(SYS_env_set_status, 1, envid, status, 0, 0, 0);
 }
-  8002be:	83 c4 2c             	add    $0x2c,%esp
-  8002c1:	5b                   	pop    %ebx
-  8002c2:	5e                   	pop    %esi
-  8002c3:	5f                   	pop    %edi
-  8002c4:	5d                   	pop    %ebp
-  8002c5:	c3                   	ret    
+  8002c2:	83 c4 2c             	add    $0x2c,%esp
+  8002c5:	5b                   	pop    %ebx
+  8002c6:	5e                   	pop    %esi
+  8002c7:	5f                   	pop    %edi
+  8002c8:	5d                   	pop    %ebp
+  8002c9:	c3                   	ret    
 
-008002c6 <sys_env_set_pgfault_upcall>:
+008002ca <sys_env_set_pgfault_upcall>:
 
 int
 sys_env_set_pgfault_upcall(envid_t envid, void *upcall)
 {
-  8002c6:	55                   	push   %ebp
-  8002c7:	89 e5                	mov    %esp,%ebp
-  8002c9:	57                   	push   %edi
-  8002ca:	56                   	push   %esi
-  8002cb:	53                   	push   %ebx
-  8002cc:	83 ec 2c             	sub    $0x2c,%esp
+  8002ca:	55                   	push   %ebp
+  8002cb:	89 e5                	mov    %esp,%ebp
+  8002cd:	57                   	push   %edi
+  8002ce:	56                   	push   %esi
+  8002cf:	53                   	push   %ebx
+  8002d0:	83 ec 2c             	sub    $0x2c,%esp
 	//
 	// The last clause tells the assembler that this can
 	// potentially change the condition codes and arbitrary
 	// memory locations.
 
 	asm volatile("int %1\n"
-  8002cf:	bb 00 00 00 00       	mov    $0x0,%ebx
-  8002d4:	b8 09 00 00 00       	mov    $0x9,%eax
-  8002d9:	8b 4d 0c             	mov    0xc(%ebp),%ecx
-  8002dc:	8b 55 08             	mov    0x8(%ebp),%edx
-  8002df:	89 df                	mov    %ebx,%edi
-  8002e1:	89 de                	mov    %ebx,%esi
-  8002e3:	cd 30                	int    $0x30
+  8002d3:	bb 00 00 00 00       	mov    $0x0,%ebx
+  8002d8:	b8 09 00 00 00       	mov    $0x9,%eax
+  8002dd:	8b 4d 0c             	mov    0xc(%ebp),%ecx
+  8002e0:	8b 55 08             	mov    0x8(%ebp),%edx
+  8002e3:	89 df                	mov    %ebx,%edi
+  8002e5:	89 de                	mov    %ebx,%esi
+  8002e7:	cd 30                	int    $0x30
 		  "b" (a3),
 		  "D" (a4),
 		  "S" (a5)
 		: "cc", "memory");
 
 	if(check && ret > 0)
-  8002e5:	85 c0                	test   %eax,%eax
-  8002e7:	7e 28                	jle    800311 <sys_env_set_pgfault_upcall+0x4b>
+  8002e9:	85 c0                	test   %eax,%eax
+  8002eb:	7e 28                	jle    800315 <sys_env_set_pgfault_upcall+0x4b>
 		panic("syscall %d returned %d (> 0)", num, ret);
-  8002e9:	89 44 24 10          	mov    %eax,0x10(%esp)
-  8002ed:	c7 44 24 0c 09 00 00 	movl   $0x9,0xc(%esp)
-  8002f4:	00 
-  8002f5:	c7 44 24 08 b8 15 80 	movl   $0x8015b8,0x8(%esp)
-  8002fc:	00 
-  8002fd:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
-  800304:	00 
-  800305:	c7 04 24 d5 15 80 00 	movl   $0x8015d5,(%esp)
-  80030c:	e8 7d 00 00 00       	call   80038e <_panic>
+  8002ed:	89 44 24 10          	mov    %eax,0x10(%esp)
+  8002f1:	c7 44 24 0c 09 00 00 	movl   $0x9,0xc(%esp)
+  8002f8:	00 
+  8002f9:	c7 44 24 08 b8 15 80 	movl   $0x8015b8,0x8(%esp)
+  800300:	00 
+  800301:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
+  800308:	00 
+  800309:	c7 04 24 d5 15 80 00 	movl   $0x8015d5,(%esp)
+  800310:	e8 7d 00 00 00       	call   800392 <_panic>
 
 int
 sys_env_set_pgfault_upcall(envid_t envid, void *upcall)
 {
 	return syscall(SYS_env_set_pgfault_upcall, 1, envid, (uint32_t) upcall, 0, 0, 0);
 }
-  800311:	83 c4 2c             	add    $0x2c,%esp
-  800314:	5b                   	pop    %ebx
-  800315:	5e                   	pop    %esi
-  800316:	5f                   	pop    %edi
-  800317:	5d                   	pop    %ebp
-  800318:	c3                   	ret    
+  800315:	83 c4 2c             	add    $0x2c,%esp
+  800318:	5b                   	pop    %ebx
+  800319:	5e                   	pop    %esi
+  80031a:	5f                   	pop    %edi
+  80031b:	5d                   	pop    %ebp
+  80031c:	c3                   	ret    
 
-00800319 <sys_ipc_try_send>:
+0080031d <sys_ipc_try_send>:
 
 int
 sys_ipc_try_send(envid_t envid, uint32_t value, void *srcva, int perm)
 {
-  800319:	55                   	push   %ebp
-  80031a:	89 e5                	mov    %esp,%ebp
-  80031c:	57                   	push   %edi
-  80031d:	56                   	push   %esi
-  80031e:	53                   	push   %ebx
+  80031d:	55                   	push   %ebp
+  80031e:	89 e5                	mov    %esp,%ebp
+  800320:	57                   	push   %edi
+  800321:	56                   	push   %esi
+  800322:	53                   	push   %ebx
 	//
 	// The last clause tells the assembler that this can
 	// potentially change the condition codes and arbitrary
 	// memory locations.
 
 	asm volatile("int %1\n"
-  80031f:	be 00 00 00 00       	mov    $0x0,%esi
-  800324:	b8 0b 00 00 00       	mov    $0xb,%eax
-  800329:	8b 4d 0c             	mov    0xc(%ebp),%ecx
-  80032c:	8b 55 08             	mov    0x8(%ebp),%edx
-  80032f:	8b 5d 10             	mov    0x10(%ebp),%ebx
-  800332:	8b 7d 14             	mov    0x14(%ebp),%edi
-  800335:	cd 30                	int    $0x30
+  800323:	be 00 00 00 00       	mov    $0x0,%esi
+  800328:	b8 0b 00 00 00       	mov    $0xb,%eax
+  80032d:	8b 4d 0c             	mov    0xc(%ebp),%ecx
+  800330:	8b 55 08             	mov    0x8(%ebp),%edx
+  800333:	8b 5d 10             	mov    0x10(%ebp),%ebx
+  800336:	8b 7d 14             	mov    0x14(%ebp),%edi
+  800339:	cd 30                	int    $0x30
 
 int
 sys_ipc_try_send(envid_t envid, uint32_t value, void *srcva, int perm)
 {
 	return syscall(SYS_ipc_try_send, 0, envid, value, (uint32_t) srcva, perm, 0);
 }
-  800337:	5b                   	pop    %ebx
-  800338:	5e                   	pop    %esi
-  800339:	5f                   	pop    %edi
-  80033a:	5d                   	pop    %ebp
-  80033b:	c3                   	ret    
+  80033b:	5b                   	pop    %ebx
+  80033c:	5e                   	pop    %esi
+  80033d:	5f                   	pop    %edi
+  80033e:	5d                   	pop    %ebp
+  80033f:	c3                   	ret    
 
-0080033c <sys_ipc_recv>:
+00800340 <sys_ipc_recv>:
 
 int
 sys_ipc_recv(void *dstva)
 {
-  80033c:	55                   	push   %ebp
-  80033d:	89 e5                	mov    %esp,%ebp
-  80033f:	57                   	push   %edi
-  800340:	56                   	push   %esi
-  800341:	53                   	push   %ebx
-  800342:	83 ec 2c             	sub    $0x2c,%esp
+  800340:	55                   	push   %ebp
+  800341:	89 e5                	mov    %esp,%ebp
+  800343:	57                   	push   %edi
+  800344:	56                   	push   %esi
+  800345:	53                   	push   %ebx
+  800346:	83 ec 2c             	sub    $0x2c,%esp
 	//
 	// The last clause tells the assembler that this can
 	// potentially change the condition codes and arbitrary
 	// memory locations.
 
 	asm volatile("int %1\n"
-  800345:	b9 00 00 00 00       	mov    $0x0,%ecx
-  80034a:	b8 0c 00 00 00       	mov    $0xc,%eax
-  80034f:	8b 55 08             	mov    0x8(%ebp),%edx
-  800352:	89 cb                	mov    %ecx,%ebx
-  800354:	89 cf                	mov    %ecx,%edi
-  800356:	89 ce                	mov    %ecx,%esi
-  800358:	cd 30                	int    $0x30
+  800349:	b9 00 00 00 00       	mov    $0x0,%ecx
+  80034e:	b8 0c 00 00 00       	mov    $0xc,%eax
+  800353:	8b 55 08             	mov    0x8(%ebp),%edx
+  800356:	89 cb                	mov    %ecx,%ebx
+  800358:	89 cf                	mov    %ecx,%edi
+  80035a:	89 ce                	mov    %ecx,%esi
+  80035c:	cd 30                	int    $0x30
 		  "b" (a3),
 		  "D" (a4),
 		  "S" (a5)
 		: "cc", "memory");
 
 	if(check && ret > 0)
-  80035a:	85 c0                	test   %eax,%eax
-  80035c:	7e 28                	jle    800386 <sys_ipc_recv+0x4a>
+  80035e:	85 c0                	test   %eax,%eax
+  800360:	7e 28                	jle    80038a <sys_ipc_recv+0x4a>
 		panic("syscall %d returned %d (> 0)", num, ret);
-  80035e:	89 44 24 10          	mov    %eax,0x10(%esp)
-  800362:	c7 44 24 0c 0c 00 00 	movl   $0xc,0xc(%esp)
-  800369:	00 
-  80036a:	c7 44 24 08 b8 15 80 	movl   $0x8015b8,0x8(%esp)
-  800371:	00 
-  800372:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
-  800379:	00 
-  80037a:	c7 04 24 d5 15 80 00 	movl   $0x8015d5,(%esp)
-  800381:	e8 08 00 00 00       	call   80038e <_panic>
+  800362:	89 44 24 10          	mov    %eax,0x10(%esp)
+  800366:	c7 44 24 0c 0c 00 00 	movl   $0xc,0xc(%esp)
+  80036d:	00 
+  80036e:	c7 44 24 08 b8 15 80 	movl   $0x8015b8,0x8(%esp)
+  800375:	00 
+  800376:	c7 44 24 04 23 00 00 	movl   $0x23,0x4(%esp)
+  80037d:	00 
+  80037e:	c7 04 24 d5 15 80 00 	movl   $0x8015d5,(%esp)
+  800385:	e8 08 00 00 00       	call   800392 <_panic>
 
 int
 sys_ipc_recv(void *dstva)
 {
 	return syscall(SYS_ipc_recv, 1, (uint32_t)dstva, 0, 0, 0, 0);
 }
-  800386:	83 c4 2c             	add    $0x2c,%esp
-  800389:	5b                   	pop    %ebx
-  80038a:	5e                   	pop    %esi
-  80038b:	5f                   	pop    %edi
-  80038c:	5d                   	pop    %ebp
-  80038d:	c3                   	ret    
+  80038a:	83 c4 2c             	add    $0x2c,%esp
+  80038d:	5b                   	pop    %ebx
+  80038e:	5e                   	pop    %esi
+  80038f:	5f                   	pop    %edi
+  800390:	5d                   	pop    %ebp
+  800391:	c3                   	ret    
 
-0080038e <_panic>:
+00800392 <_panic>:
  * It prints "panic: <message>", then causes a breakpoint exception,
  * which causes JOS to enter the JOS kernel monitor.
  */
 void
 _panic(const char *file, int line, const char *fmt, ...)
 {
-  80038e:	55                   	push   %ebp
-  80038f:	89 e5                	mov    %esp,%ebp
-  800391:	56                   	push   %esi
-  800392:	53                   	push   %ebx
-  800393:	83 ec 20             	sub    $0x20,%esp
+  800392:	55                   	push   %ebp
+  800393:	89 e5                	mov    %esp,%ebp
+  800395:	56                   	push   %esi
+  800396:	53                   	push   %ebx
+  800397:	83 ec 20             	sub    $0x20,%esp
 	va_list ap;
 
 	va_start(ap, fmt);
-  800396:	8d 5d 14             	lea    0x14(%ebp),%ebx
+  80039a:	8d 5d 14             	lea    0x14(%ebp),%ebx
 
 	// Print the panic message
 	cprintf("[%08x] user panic in %s at %s:%d: ",
-  800399:	8b 35 04 20 80 00    	mov    0x802004,%esi
-  80039f:	e8 97 fd ff ff       	call   80013b <sys_getenvid>
-  8003a4:	8b 55 0c             	mov    0xc(%ebp),%edx
-  8003a7:	89 54 24 10          	mov    %edx,0x10(%esp)
-  8003ab:	8b 55 08             	mov    0x8(%ebp),%edx
-  8003ae:	89 54 24 0c          	mov    %edx,0xc(%esp)
-  8003b2:	89 74 24 08          	mov    %esi,0x8(%esp)
-  8003b6:	89 44 24 04          	mov    %eax,0x4(%esp)
-  8003ba:	c7 04 24 e4 15 80 00 	movl   $0x8015e4,(%esp)
-  8003c1:	e8 c1 00 00 00       	call   800487 <cprintf>
+  80039d:	8b 35 04 20 80 00    	mov    0x802004,%esi
+  8003a3:	e8 97 fd ff ff       	call   80013f <sys_getenvid>
+  8003a8:	8b 55 0c             	mov    0xc(%ebp),%edx
+  8003ab:	89 54 24 10          	mov    %edx,0x10(%esp)
+  8003af:	8b 55 08             	mov    0x8(%ebp),%edx
+  8003b2:	89 54 24 0c          	mov    %edx,0xc(%esp)
+  8003b6:	89 74 24 08          	mov    %esi,0x8(%esp)
+  8003ba:	89 44 24 04          	mov    %eax,0x4(%esp)
+  8003be:	c7 04 24 e4 15 80 00 	movl   $0x8015e4,(%esp)
+  8003c5:	e8 c1 00 00 00       	call   80048b <cprintf>
 		sys_getenvid(), binaryname, file, line);
 	vcprintf(fmt, ap);
-  8003c6:	89 5c 24 04          	mov    %ebx,0x4(%esp)
-  8003ca:	8b 45 10             	mov    0x10(%ebp),%eax
-  8003cd:	89 04 24             	mov    %eax,(%esp)
-  8003d0:	e8 51 00 00 00       	call   800426 <vcprintf>
+  8003ca:	89 5c 24 04          	mov    %ebx,0x4(%esp)
+  8003ce:	8b 45 10             	mov    0x10(%ebp),%eax
+  8003d1:	89 04 24             	mov    %eax,(%esp)
+  8003d4:	e8 51 00 00 00       	call   80042a <vcprintf>
 	cprintf("\n");
-  8003d5:	c7 04 24 ac 15 80 00 	movl   $0x8015ac,(%esp)
-  8003dc:	e8 a6 00 00 00       	call   800487 <cprintf>
+  8003d9:	c7 04 24 ac 15 80 00 	movl   $0x8015ac,(%esp)
+  8003e0:	e8 a6 00 00 00       	call   80048b <cprintf>
 
 	// Cause a breakpoint exception
 	while (1)
 		asm volatile("int3");
-  8003e1:	cc                   	int3   
-  8003e2:	eb fd                	jmp    8003e1 <_panic+0x53>
+  8003e5:	cc                   	int3   
+  8003e6:	eb fd                	jmp    8003e5 <_panic+0x53>
 
-008003e4 <putch>:
+008003e8 <putch>:
 };
 
 
 static void
 putch(int ch, struct printbuf *b)
 {
-  8003e4:	55                   	push   %ebp
-  8003e5:	89 e5                	mov    %esp,%ebp
-  8003e7:	53                   	push   %ebx
-  8003e8:	83 ec 14             	sub    $0x14,%esp
-  8003eb:	8b 5d 0c             	mov    0xc(%ebp),%ebx
+  8003e8:	55                   	push   %ebp
+  8003e9:	89 e5                	mov    %esp,%ebp
+  8003eb:	53                   	push   %ebx
+  8003ec:	83 ec 14             	sub    $0x14,%esp
+  8003ef:	8b 5d 0c             	mov    0xc(%ebp),%ebx
 	b->buf[b->idx++] = ch;
-  8003ee:	8b 13                	mov    (%ebx),%edx
-  8003f0:	8d 42 01             	lea    0x1(%edx),%eax
-  8003f3:	89 03                	mov    %eax,(%ebx)
-  8003f5:	8b 4d 08             	mov    0x8(%ebp),%ecx
-  8003f8:	88 4c 13 08          	mov    %cl,0x8(%ebx,%edx,1)
+  8003f2:	8b 13                	mov    (%ebx),%edx
+  8003f4:	8d 42 01             	lea    0x1(%edx),%eax
+  8003f7:	89 03                	mov    %eax,(%ebx)
+  8003f9:	8b 4d 08             	mov    0x8(%ebp),%ecx
+  8003fc:	88 4c 13 08          	mov    %cl,0x8(%ebx,%edx,1)
 	if (b->idx == 256-1) {
-  8003fc:	3d ff 00 00 00       	cmp    $0xff,%eax
-  800401:	75 19                	jne    80041c <putch+0x38>
+  800400:	3d ff 00 00 00       	cmp    $0xff,%eax
+  800405:	75 19                	jne    800420 <putch+0x38>
 		sys_cputs(b->buf, b->idx);
-  800403:	c7 44 24 04 ff 00 00 	movl   $0xff,0x4(%esp)
-  80040a:	00 
-  80040b:	8d 43 08             	lea    0x8(%ebx),%eax
-  80040e:	89 04 24             	mov    %eax,(%esp)
-  800411:	e8 96 fc ff ff       	call   8000ac <sys_cputs>
+  800407:	c7 44 24 04 ff 00 00 	movl   $0xff,0x4(%esp)
+  80040e:	00 
+  80040f:	8d 43 08             	lea    0x8(%ebx),%eax
+  800412:	89 04 24             	mov    %eax,(%esp)
+  800415:	e8 96 fc ff ff       	call   8000b0 <sys_cputs>
 		b->idx = 0;
-  800416:	c7 03 00 00 00 00    	movl   $0x0,(%ebx)
+  80041a:	c7 03 00 00 00 00    	movl   $0x0,(%ebx)
 	}
 	b->cnt++;
-  80041c:	83 43 04 01          	addl   $0x1,0x4(%ebx)
+  800420:	83 43 04 01          	addl   $0x1,0x4(%ebx)
 }
-  800420:	83 c4 14             	add    $0x14,%esp
-  800423:	5b                   	pop    %ebx
-  800424:	5d                   	pop    %ebp
-  800425:	c3                   	ret    
+  800424:	83 c4 14             	add    $0x14,%esp
+  800427:	5b                   	pop    %ebx
+  800428:	5d                   	pop    %ebp
+  800429:	c3                   	ret    
 
-00800426 <vcprintf>:
+0080042a <vcprintf>:
 
 int
 vcprintf(const char *fmt, va_list ap)
 {
-  800426:	55                   	push   %ebp
-  800427:	89 e5                	mov    %esp,%ebp
-  800429:	81 ec 28 01 00 00    	sub    $0x128,%esp
+  80042a:	55                   	push   %ebp
+  80042b:	89 e5                	mov    %esp,%ebp
+  80042d:	81 ec 28 01 00 00    	sub    $0x128,%esp
 	struct printbuf b;
 
 	b.idx = 0;
-  80042f:	c7 85 f0 fe ff ff 00 	movl   $0x0,-0x110(%ebp)
-  800436:	00 00 00 
+  800433:	c7 85 f0 fe ff ff 00 	movl   $0x0,-0x110(%ebp)
+  80043a:	00 00 00 
 	b.cnt = 0;
-  800439:	c7 85 f4 fe ff ff 00 	movl   $0x0,-0x10c(%ebp)
-  800440:	00 00 00 
+  80043d:	c7 85 f4 fe ff ff 00 	movl   $0x0,-0x10c(%ebp)
+  800444:	00 00 00 
 	vprintfmt((void*)putch, &b, fmt, ap);
-  800443:	8b 45 0c             	mov    0xc(%ebp),%eax
-  800446:	89 44 24 0c          	mov    %eax,0xc(%esp)
-  80044a:	8b 45 08             	mov    0x8(%ebp),%eax
-  80044d:	89 44 24 08          	mov    %eax,0x8(%esp)
-  800451:	8d 85 f0 fe ff ff    	lea    -0x110(%ebp),%eax
-  800457:	89 44 24 04          	mov    %eax,0x4(%esp)
-  80045b:	c7 04 24 e4 03 80 00 	movl   $0x8003e4,(%esp)
-  800462:	e8 b8 02 00 00       	call   80071f <vprintfmt>
+  800447:	8b 45 0c             	mov    0xc(%ebp),%eax
+  80044a:	89 44 24 0c          	mov    %eax,0xc(%esp)
+  80044e:	8b 45 08             	mov    0x8(%ebp),%eax
+  800451:	89 44 24 08          	mov    %eax,0x8(%esp)
+  800455:	8d 85 f0 fe ff ff    	lea    -0x110(%ebp),%eax
+  80045b:	89 44 24 04          	mov    %eax,0x4(%esp)
+  80045f:	c7 04 24 e8 03 80 00 	movl   $0x8003e8,(%esp)
+  800466:	e8 b4 02 00 00       	call   80071f <vprintfmt>
 	sys_cputs(b.buf, b.idx);
-  800467:	8b 85 f0 fe ff ff    	mov    -0x110(%ebp),%eax
-  80046d:	89 44 24 04          	mov    %eax,0x4(%esp)
-  800471:	8d 85 f8 fe ff ff    	lea    -0x108(%ebp),%eax
-  800477:	89 04 24             	mov    %eax,(%esp)
-  80047a:	e8 2d fc ff ff       	call   8000ac <sys_cputs>
+  80046b:	8b 85 f0 fe ff ff    	mov    -0x110(%ebp),%eax
+  800471:	89 44 24 04          	mov    %eax,0x4(%esp)
+  800475:	8d 85 f8 fe ff ff    	lea    -0x108(%ebp),%eax
+  80047b:	89 04 24             	mov    %eax,(%esp)
+  80047e:	e8 2d fc ff ff       	call   8000b0 <sys_cputs>
 
 	return b.cnt;
 }
-  80047f:	8b 85 f4 fe ff ff    	mov    -0x10c(%ebp),%eax
-  800485:	c9                   	leave  
-  800486:	c3                   	ret    
+  800483:	8b 85 f4 fe ff ff    	mov    -0x10c(%ebp),%eax
+  800489:	c9                   	leave  
+  80048a:	c3                   	ret    
 
-00800487 <cprintf>:
+0080048b <cprintf>:
 
 int
 cprintf(const char *fmt, ...)
 {
-  800487:	55                   	push   %ebp
-  800488:	89 e5                	mov    %esp,%ebp
-  80048a:	83 ec 18             	sub    $0x18,%esp
+  80048b:	55                   	push   %ebp
+  80048c:	89 e5                	mov    %esp,%ebp
+  80048e:	83 ec 18             	sub    $0x18,%esp
 	va_list ap;
 	int cnt;
 
 	va_start(ap, fmt);
-  80048d:	8d 45 0c             	lea    0xc(%ebp),%eax
+  800491:	8d 45 0c             	lea    0xc(%ebp),%eax
 	cnt = vcprintf(fmt, ap);
-  800490:	89 44 24 04          	mov    %eax,0x4(%esp)
-  800494:	8b 45 08             	mov    0x8(%ebp),%eax
-  800497:	89 04 24             	mov    %eax,(%esp)
-  80049a:	e8 87 ff ff ff       	call   800426 <vcprintf>
+  800494:	89 44 24 04          	mov    %eax,0x4(%esp)
+  800498:	8b 45 08             	mov    0x8(%ebp),%eax
+  80049b:	89 04 24             	mov    %eax,(%esp)
+  80049e:	e8 87 ff ff ff       	call   80042a <vcprintf>
 	va_end(ap);
 
 	return cnt;
 }
-  80049f:	c9                   	leave  
-  8004a0:	c3                   	ret    
-  8004a1:	66 90                	xchg   %ax,%ax
-  8004a3:	66 90                	xchg   %ax,%ax
+  8004a3:	c9                   	leave  
+  8004a4:	c3                   	ret    
   8004a5:	66 90                	xchg   %ax,%ax
   8004a7:	66 90                	xchg   %ax,%ax
   8004a9:	66 90                	xchg   %ax,%ax

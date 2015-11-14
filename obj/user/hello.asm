@@ -43,13 +43,13 @@ umain(int argc, char **argv)
   800036:	83 ec 18             	sub    $0x18,%esp
 	cprintf("hello, world\n");
   800039:	c7 04 24 a0 15 80 00 	movl   $0x8015a0,(%esp)
-  800040:	e8 19 01 00 00       	call   80015e <cprintf>
+  800040:	e8 1d 01 00 00       	call   800162 <cprintf>
 	cprintf("i am environment %08x\n", thisenv->env_id);
   800045:	a1 04 20 80 00       	mov    0x802004,%eax
   80004a:	8b 40 48             	mov    0x48(%eax),%eax
   80004d:	89 44 24 04          	mov    %eax,0x4(%esp)
   800051:	c7 04 24 ae 15 80 00 	movl   $0x8015ae,(%esp)
-  800058:	e8 01 01 00 00       	call   80015e <cprintf>
+  800058:	e8 05 01 00 00       	call   800162 <cprintf>
 }
   80005d:	c9                   	leave  
   80005e:	c3                   	ret    
@@ -73,153 +73,152 @@ libmain(int argc, char **argv)
 	thisenv = ( ( struct Env * ) envs ) + ENVX(sys_getenvid());
   80006d:	e8 f3 0f 00 00       	call   801065 <sys_getenvid>
   800072:	25 ff 03 00 00       	and    $0x3ff,%eax
-  800077:	6b c0 7c             	imul   $0x7c,%eax,%eax
-  80007a:	05 00 00 c0 ee       	add    $0xeec00000,%eax
-  80007f:	a3 04 20 80 00       	mov    %eax,0x802004
+  800077:	89 c2                	mov    %eax,%edx
+  800079:	c1 e2 07             	shl    $0x7,%edx
+  80007c:	8d 84 c2 00 00 c0 ee 	lea    -0x11400000(%edx,%eax,8),%eax
+  800083:	a3 04 20 80 00       	mov    %eax,0x802004
 
 	// save the name of the program so that panic() can use it
 	if (argc > 0)
-  800084:	85 db                	test   %ebx,%ebx
-  800086:	7e 07                	jle    80008f <libmain+0x30>
+  800088:	85 db                	test   %ebx,%ebx
+  80008a:	7e 07                	jle    800093 <libmain+0x34>
 		binaryname = argv[0];
-  800088:	8b 06                	mov    (%esi),%eax
-  80008a:	a3 00 20 80 00       	mov    %eax,0x802000
+  80008c:	8b 06                	mov    (%esi),%eax
+  80008e:	a3 00 20 80 00       	mov    %eax,0x802000
 
 	// call user main routine
 	umain(argc, argv);
-  80008f:	89 74 24 04          	mov    %esi,0x4(%esp)
-  800093:	89 1c 24             	mov    %ebx,(%esp)
-  800096:	e8 98 ff ff ff       	call   800033 <umain>
+  800093:	89 74 24 04          	mov    %esi,0x4(%esp)
+  800097:	89 1c 24             	mov    %ebx,(%esp)
+  80009a:	e8 94 ff ff ff       	call   800033 <umain>
 
 	// exit gracefully
 	exit();
-  80009b:	e8 07 00 00 00       	call   8000a7 <exit>
+  80009f:	e8 07 00 00 00       	call   8000ab <exit>
 }
-  8000a0:	83 c4 10             	add    $0x10,%esp
-  8000a3:	5b                   	pop    %ebx
-  8000a4:	5e                   	pop    %esi
-  8000a5:	5d                   	pop    %ebp
-  8000a6:	c3                   	ret    
+  8000a4:	83 c4 10             	add    $0x10,%esp
+  8000a7:	5b                   	pop    %ebx
+  8000a8:	5e                   	pop    %esi
+  8000a9:	5d                   	pop    %ebp
+  8000aa:	c3                   	ret    
 
-008000a7 <exit>:
+008000ab <exit>:
 
 #include <inc/lib.h>
 
 void
 exit(void)
 {
-  8000a7:	55                   	push   %ebp
-  8000a8:	89 e5                	mov    %esp,%ebp
-  8000aa:	83 ec 18             	sub    $0x18,%esp
+  8000ab:	55                   	push   %ebp
+  8000ac:	89 e5                	mov    %esp,%ebp
+  8000ae:	83 ec 18             	sub    $0x18,%esp
 	sys_env_destroy(0);
-  8000ad:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
-  8000b4:	e8 5a 0f 00 00       	call   801013 <sys_env_destroy>
+  8000b1:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  8000b8:	e8 56 0f 00 00       	call   801013 <sys_env_destroy>
 }
-  8000b9:	c9                   	leave  
-  8000ba:	c3                   	ret    
+  8000bd:	c9                   	leave  
+  8000be:	c3                   	ret    
 
-008000bb <putch>:
+008000bf <putch>:
 };
 
 
 static void
 putch(int ch, struct printbuf *b)
 {
-  8000bb:	55                   	push   %ebp
-  8000bc:	89 e5                	mov    %esp,%ebp
-  8000be:	53                   	push   %ebx
-  8000bf:	83 ec 14             	sub    $0x14,%esp
-  8000c2:	8b 5d 0c             	mov    0xc(%ebp),%ebx
+  8000bf:	55                   	push   %ebp
+  8000c0:	89 e5                	mov    %esp,%ebp
+  8000c2:	53                   	push   %ebx
+  8000c3:	83 ec 14             	sub    $0x14,%esp
+  8000c6:	8b 5d 0c             	mov    0xc(%ebp),%ebx
 	b->buf[b->idx++] = ch;
-  8000c5:	8b 13                	mov    (%ebx),%edx
-  8000c7:	8d 42 01             	lea    0x1(%edx),%eax
-  8000ca:	89 03                	mov    %eax,(%ebx)
-  8000cc:	8b 4d 08             	mov    0x8(%ebp),%ecx
-  8000cf:	88 4c 13 08          	mov    %cl,0x8(%ebx,%edx,1)
+  8000c9:	8b 13                	mov    (%ebx),%edx
+  8000cb:	8d 42 01             	lea    0x1(%edx),%eax
+  8000ce:	89 03                	mov    %eax,(%ebx)
+  8000d0:	8b 4d 08             	mov    0x8(%ebp),%ecx
+  8000d3:	88 4c 13 08          	mov    %cl,0x8(%ebx,%edx,1)
 	if (b->idx == 256-1) {
-  8000d3:	3d ff 00 00 00       	cmp    $0xff,%eax
-  8000d8:	75 19                	jne    8000f3 <putch+0x38>
+  8000d7:	3d ff 00 00 00       	cmp    $0xff,%eax
+  8000dc:	75 19                	jne    8000f7 <putch+0x38>
 		sys_cputs(b->buf, b->idx);
-  8000da:	c7 44 24 04 ff 00 00 	movl   $0xff,0x4(%esp)
-  8000e1:	00 
-  8000e2:	8d 43 08             	lea    0x8(%ebx),%eax
-  8000e5:	89 04 24             	mov    %eax,(%esp)
-  8000e8:	e8 e9 0e 00 00       	call   800fd6 <sys_cputs>
+  8000de:	c7 44 24 04 ff 00 00 	movl   $0xff,0x4(%esp)
+  8000e5:	00 
+  8000e6:	8d 43 08             	lea    0x8(%ebx),%eax
+  8000e9:	89 04 24             	mov    %eax,(%esp)
+  8000ec:	e8 e5 0e 00 00       	call   800fd6 <sys_cputs>
 		b->idx = 0;
-  8000ed:	c7 03 00 00 00 00    	movl   $0x0,(%ebx)
+  8000f1:	c7 03 00 00 00 00    	movl   $0x0,(%ebx)
 	}
 	b->cnt++;
-  8000f3:	83 43 04 01          	addl   $0x1,0x4(%ebx)
+  8000f7:	83 43 04 01          	addl   $0x1,0x4(%ebx)
 }
-  8000f7:	83 c4 14             	add    $0x14,%esp
-  8000fa:	5b                   	pop    %ebx
-  8000fb:	5d                   	pop    %ebp
-  8000fc:	c3                   	ret    
+  8000fb:	83 c4 14             	add    $0x14,%esp
+  8000fe:	5b                   	pop    %ebx
+  8000ff:	5d                   	pop    %ebp
+  800100:	c3                   	ret    
 
-008000fd <vcprintf>:
+00800101 <vcprintf>:
 
 int
 vcprintf(const char *fmt, va_list ap)
 {
-  8000fd:	55                   	push   %ebp
-  8000fe:	89 e5                	mov    %esp,%ebp
-  800100:	81 ec 28 01 00 00    	sub    $0x128,%esp
+  800101:	55                   	push   %ebp
+  800102:	89 e5                	mov    %esp,%ebp
+  800104:	81 ec 28 01 00 00    	sub    $0x128,%esp
 	struct printbuf b;
 
 	b.idx = 0;
-  800106:	c7 85 f0 fe ff ff 00 	movl   $0x0,-0x110(%ebp)
-  80010d:	00 00 00 
+  80010a:	c7 85 f0 fe ff ff 00 	movl   $0x0,-0x110(%ebp)
+  800111:	00 00 00 
 	b.cnt = 0;
-  800110:	c7 85 f4 fe ff ff 00 	movl   $0x0,-0x10c(%ebp)
-  800117:	00 00 00 
+  800114:	c7 85 f4 fe ff ff 00 	movl   $0x0,-0x10c(%ebp)
+  80011b:	00 00 00 
 	vprintfmt((void*)putch, &b, fmt, ap);
-  80011a:	8b 45 0c             	mov    0xc(%ebp),%eax
-  80011d:	89 44 24 0c          	mov    %eax,0xc(%esp)
-  800121:	8b 45 08             	mov    0x8(%ebp),%eax
-  800124:	89 44 24 08          	mov    %eax,0x8(%esp)
-  800128:	8d 85 f0 fe ff ff    	lea    -0x110(%ebp),%eax
-  80012e:	89 44 24 04          	mov    %eax,0x4(%esp)
-  800132:	c7 04 24 bb 00 80 00 	movl   $0x8000bb,(%esp)
-  800139:	e8 b1 02 00 00       	call   8003ef <vprintfmt>
+  80011e:	8b 45 0c             	mov    0xc(%ebp),%eax
+  800121:	89 44 24 0c          	mov    %eax,0xc(%esp)
+  800125:	8b 45 08             	mov    0x8(%ebp),%eax
+  800128:	89 44 24 08          	mov    %eax,0x8(%esp)
+  80012c:	8d 85 f0 fe ff ff    	lea    -0x110(%ebp),%eax
+  800132:	89 44 24 04          	mov    %eax,0x4(%esp)
+  800136:	c7 04 24 bf 00 80 00 	movl   $0x8000bf,(%esp)
+  80013d:	e8 ad 02 00 00       	call   8003ef <vprintfmt>
 	sys_cputs(b.buf, b.idx);
-  80013e:	8b 85 f0 fe ff ff    	mov    -0x110(%ebp),%eax
-  800144:	89 44 24 04          	mov    %eax,0x4(%esp)
-  800148:	8d 85 f8 fe ff ff    	lea    -0x108(%ebp),%eax
-  80014e:	89 04 24             	mov    %eax,(%esp)
-  800151:	e8 80 0e 00 00       	call   800fd6 <sys_cputs>
+  800142:	8b 85 f0 fe ff ff    	mov    -0x110(%ebp),%eax
+  800148:	89 44 24 04          	mov    %eax,0x4(%esp)
+  80014c:	8d 85 f8 fe ff ff    	lea    -0x108(%ebp),%eax
+  800152:	89 04 24             	mov    %eax,(%esp)
+  800155:	e8 7c 0e 00 00       	call   800fd6 <sys_cputs>
 
 	return b.cnt;
 }
-  800156:	8b 85 f4 fe ff ff    	mov    -0x10c(%ebp),%eax
-  80015c:	c9                   	leave  
-  80015d:	c3                   	ret    
+  80015a:	8b 85 f4 fe ff ff    	mov    -0x10c(%ebp),%eax
+  800160:	c9                   	leave  
+  800161:	c3                   	ret    
 
-0080015e <cprintf>:
+00800162 <cprintf>:
 
 int
 cprintf(const char *fmt, ...)
 {
-  80015e:	55                   	push   %ebp
-  80015f:	89 e5                	mov    %esp,%ebp
-  800161:	83 ec 18             	sub    $0x18,%esp
+  800162:	55                   	push   %ebp
+  800163:	89 e5                	mov    %esp,%ebp
+  800165:	83 ec 18             	sub    $0x18,%esp
 	va_list ap;
 	int cnt;
 
 	va_start(ap, fmt);
-  800164:	8d 45 0c             	lea    0xc(%ebp),%eax
+  800168:	8d 45 0c             	lea    0xc(%ebp),%eax
 	cnt = vcprintf(fmt, ap);
-  800167:	89 44 24 04          	mov    %eax,0x4(%esp)
-  80016b:	8b 45 08             	mov    0x8(%ebp),%eax
-  80016e:	89 04 24             	mov    %eax,(%esp)
-  800171:	e8 87 ff ff ff       	call   8000fd <vcprintf>
+  80016b:	89 44 24 04          	mov    %eax,0x4(%esp)
+  80016f:	8b 45 08             	mov    0x8(%ebp),%eax
+  800172:	89 04 24             	mov    %eax,(%esp)
+  800175:	e8 87 ff ff ff       	call   800101 <vcprintf>
 	va_end(ap);
 
 	return cnt;
 }
-  800176:	c9                   	leave  
-  800177:	c3                   	ret    
-  800178:	66 90                	xchg   %ax,%ax
-  80017a:	66 90                	xchg   %ax,%ax
+  80017a:	c9                   	leave  
+  80017b:	c3                   	ret    
   80017c:	66 90                	xchg   %ax,%ax
   80017e:	66 90                	xchg   %ax,%ax
 
@@ -3270,16 +3269,16 @@ _panic(const char *file, int line, const char *fmt, ...)
   8012dc:	89 74 24 08          	mov    %esi,0x8(%esp)
   8012e0:	89 44 24 04          	mov    %eax,0x4(%esp)
   8012e4:	c7 04 24 b4 19 80 00 	movl   $0x8019b4,(%esp)
-  8012eb:	e8 6e ee ff ff       	call   80015e <cprintf>
+  8012eb:	e8 72 ee ff ff       	call   800162 <cprintf>
 		sys_getenvid(), binaryname, file, line);
 	vcprintf(fmt, ap);
   8012f0:	89 5c 24 04          	mov    %ebx,0x4(%esp)
   8012f4:	8b 45 10             	mov    0x10(%ebp),%eax
   8012f7:	89 04 24             	mov    %eax,(%esp)
-  8012fa:	e8 fe ed ff ff       	call   8000fd <vcprintf>
+  8012fa:	e8 02 ee ff ff       	call   800101 <vcprintf>
 	cprintf("\n");
   8012ff:	c7 04 24 ac 15 80 00 	movl   $0x8015ac,(%esp)
-  801306:	e8 53 ee ff ff       	call   80015e <cprintf>
+  801306:	e8 57 ee ff ff       	call   800162 <cprintf>
 
 	// Cause a breakpoint exception
 	while (1)
